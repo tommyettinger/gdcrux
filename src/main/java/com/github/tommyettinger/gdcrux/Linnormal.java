@@ -135,8 +135,6 @@ public final class Linnormal {
         final long sign = n >> 63;
         n ^= sign;
         final int top10 = (int) (n >>> 53);
-
-        // linear interpolation
         final double s = TABLE[top10], e = TABLE[top10+1], t = (n & 0x1FFFFFFFFFFFFFL) * 0x1p-53;
         return Math.copySign(t * (e - s) + s, sign);
     }
