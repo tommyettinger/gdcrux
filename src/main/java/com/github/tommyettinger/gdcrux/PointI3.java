@@ -40,8 +40,8 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Seriali
         super(v);
     }
 
-    public PointI3(Point3<? extends Point2<?>> v) {
-        this(v.x(), v.y(), v.z());
+    public PointI3(Point3<? extends Point3<?>> v) {
+        this(v.xi(), v.yi(), v.zi());
     }
 
     /**

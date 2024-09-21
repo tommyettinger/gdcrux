@@ -39,7 +39,7 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Seriali
     }
 
     public PointI2(Point2<? extends Point2<?>> v) {
-        this(v.x(), v.y());
+        this(v.xi(), v.yi());
     }
 
     /**
