@@ -1,5 +1,6 @@
 package com.github.tommyettinger.gdcrux;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector4;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
@@ -137,6 +138,14 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, Json.Serializab
         this.z = z;
         this.w = w;
         return this;
+    }
+
+    @Override
+    public Vector4 setToRandomDirection() {
+        return set((float) Linnormal.normal(MathUtils.random.nextLong()),
+                (float) Linnormal.normal(MathUtils.random.nextLong()),
+                (float) Linnormal.normal(MathUtils.random.nextLong()),
+                (float) Linnormal.normal(MathUtils.random.nextLong())).nor();
     }
 
     @Override
