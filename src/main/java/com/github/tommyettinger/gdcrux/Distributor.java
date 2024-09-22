@@ -91,7 +91,7 @@ public final class Distributor {
      * This uses a different approximation that should have extremely low error (below {@code 0x1p-53}, or
      * {@code 1.1102230246251565E-16}).
      * <a href="https://en.wikipedia.org/wiki/Error_function#Complementary_error_function">See Wikipedia for more</a>.
-     * 
+     *
      * @param x any finite float
      * @return a float between 0 and 2, inclusive
      */
