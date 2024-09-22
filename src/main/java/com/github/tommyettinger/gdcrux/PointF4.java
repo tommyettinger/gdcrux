@@ -20,16 +20,16 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, Json.Serializab
         super(x, y, z, w);
     }
 
-    public PointF4(Vector4 v) {
-        super(v);
+    public PointF4(Vector4 p) {
+        super(p);
     }
 
-    public PointF4(PointF4 v) {
-        super(v);
+    public PointF4(PointF4 p) {
+        super(p);
     }
 
-    public PointF4(Point4<? extends Point4<?>> v) {
-        this(v.x(), v.y(), v.z(), v.w());
+    public PointF4(Point4<? extends Point4<?>> p) {
+        this(p.x(), p.y(), p.z(), p.w());
     }
 
     /**
@@ -178,20 +178,20 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, Json.Serializab
     }
 
     /** Sets this {@code PointF4} to the value represented by the specified string according to the format of {@link #toString()}.
-     * @param v the string.
+     * @param s the string.
      * @return this vector for chaining */
-    public PointF4 fromString (String v) {
-        int s0 = v.indexOf(',', 1);
-        int s1 = v.indexOf(',', s0 + 1);
-        int s2 = v.indexOf(',', s1 + 1);
-        if (s0 != -1 && s1 != -1  && s2 != -1 && v.charAt(0) == '(' && v.charAt(v.length() - 1) == ')') {
-                float x = Float.parseFloat(v.substring(1, s0));
-                float y = Float.parseFloat(v.substring(s0 + 1, s1));
-                float z = Float.parseFloat(v.substring(s1 + 1, s2));
-                float w = Float.parseFloat(v.substring(s2 + 1, v.length() - 1));
+    public PointF4 fromString (String s) {
+        int s0 = s.indexOf(',', 1);
+        int s1 = s.indexOf(',', s0 + 1);
+        int s2 = s.indexOf(',', s1 + 1);
+        if (s0 != -1 && s1 != -1  && s2 != -1 && s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
+                float x = Float.parseFloat(s.substring(1, s0));
+                float y = Float.parseFloat(s.substring(s0 + 1, s1));
+                float z = Float.parseFloat(s.substring(s1 + 1, s2));
+                float w = Float.parseFloat(s.substring(s2 + 1, s.length() - 1));
                 return this.set(x, y, z, w);
         }
-        throw new IllegalArgumentException("Not a valid format for a PointF4: " + v);
+        throw new IllegalArgumentException("Not a valid format for a PointF4: " + s);
     }
 
 }

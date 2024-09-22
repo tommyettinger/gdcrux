@@ -20,20 +20,20 @@ public class PointF3 extends Vector3 implements Point3<PointF3>, Json.Serializab
         super(x, y, z);
     }
 
-    public PointF3(Vector3 v) {
-        super(v);
+    public PointF3(Vector3 p) {
+        super(p);
     }
 
-    public PointF3(GridPoint3 v) {
-        super(v.x, v.y, v.z);
+    public PointF3(GridPoint3 p) {
+        super(p.x, p.y, p.z);
     }
 
-    public PointF3(PointF3 v) {
-        super(v);
+    public PointF3(PointF3 p) {
+        super(p);
     }
 
-    public PointF3(Point3<? extends Point3<?>> v) {
-        this(v.x(), v.y(), v.z());
+    public PointF3(Point3<? extends Point3<?>> p) {
+        this(p.x(), p.y(), p.z());
     }
 
     /**
@@ -160,18 +160,18 @@ public class PointF3 extends Vector3 implements Point3<PointF3>, Json.Serializab
     }
 
     /** Sets this {@code PointF3} to the value represented by the specified string according to the format of {@link #toString()}.
-     * @param v the string.
+     * @param s the string.
      * @return this vector for chaining */
-    public PointF3 fromString (String v) {
-        int s0 = v.indexOf(',', 1);
-        int s1 = v.indexOf(',', s0 + 1);
-        if (s0 != -1 && s1 != -1 && v.charAt(0) == '(' && v.charAt(v.length() - 1) == ')') {
-                float x = Float.parseFloat(v.substring(1, s0));
-                float y = Float.parseFloat(v.substring(s0 + 1, s1));
-                float z = Float.parseFloat(v.substring(s1 + 1, v.length() - 1));
+    public PointF3 fromString (String s) {
+        int s0 = s.indexOf(',', 1);
+        int s1 = s.indexOf(',', s0 + 1);
+        if (s0 != -1 && s1 != -1 && s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
+                float x = Float.parseFloat(s.substring(1, s0));
+                float y = Float.parseFloat(s.substring(s0 + 1, s1));
+                float z = Float.parseFloat(s.substring(s1 + 1, s.length() - 1));
                 return this.set(x, y, z);
         }
-        throw new IllegalArgumentException("Not a valid format for a PointF3: " + v);
+        throw new IllegalArgumentException("Not a valid format for a PointF3: " + s);
     }
 
 }

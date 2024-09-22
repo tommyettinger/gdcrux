@@ -26,20 +26,20 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Seriali
         super(round(x), round(y));
     }
 
-    public PointI2(GridPoint2 v) {
-        super(v);
+    public PointI2(GridPoint2 p) {
+        super(p);
     }
 
-    public PointI2(Vector2 v) {
-        super(round(v.x), round(v.y));
+    public PointI2(Vector2 p) {
+        super(round(p.x), round(p.y));
     }
 
-    public PointI2(PointI2 v) {
-        super(v);
+    public PointI2(PointI2 p) {
+        super(p);
     }
 
-    public PointI2(Point2<? extends Point2<?>> v) {
-        this(v.xi(), v.yi());
+    public PointI2(Point2<? extends Point2<?>> p) {
+        this(p.xi(), p.yi());
     }
 
     /**
@@ -104,8 +104,8 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Seriali
     }
 
     @Override
-    public boolean isUnit(float v) {
-        return MathUtils.isEqual(Math.abs(x) + Math.abs(y), 1, v);
+    public boolean isUnit(float tolerance) {
+        return MathUtils.isEqual(Math.abs(x) + Math.abs(y), 1, tolerance);
     }
 
     @Override
@@ -114,8 +114,8 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Seriali
     }
 
     @Override
-    public boolean isZero(float v) {
-        return MathUtils.isZero(x, v) && MathUtils.isZero(y, v);
+    public boolean isZero(float tolerance) {
+        return MathUtils.isZero(x, tolerance) && MathUtils.isZero(y, tolerance);
     }
 
     @Override
@@ -286,15 +286,15 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Seriali
     }
 
     /** Sets this {@code PointI2} to the value represented by the specified string according to the format of {@link #toString()}.
-     * @param v the string.
+     * @param s the string.
      * @return this vector for chaining */
-    public PointI2 fromString (String v) {
-        int s0 = v.indexOf(',', 1);
-        if (s0 != -1 && v.charAt(0) == '(' && v.charAt(v.length() - 1) == ')') {
-            int x = Integer.parseInt(v.substring(1, s0));
-            int y = Integer.parseInt(v.substring(s0 + 1, v.length() - 1));
+    public PointI2 fromString (String s) {
+        int s0 = s.indexOf(',', 1);
+        if (s0 != -1 && s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
+            int x = Integer.parseInt(s.substring(1, s0));
+            int y = Integer.parseInt(s.substring(s0 + 1, s.length() - 1));
             return this.set(x, y);
         }
-        throw new IllegalArgumentException("Not a valid format for a PointI2: " + v);
+        throw new IllegalArgumentException("Not a valid format for a PointI2: " + s);
     }
 }

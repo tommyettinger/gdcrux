@@ -26,16 +26,16 @@ public class PointI4 implements Point4<PointI4>, Json.Serializable {
         this(round(x), round(y), round(z), round(w));
     }
 
-    public PointI4(Vector4 v) {
-        this(round(v.x), round(v.y), round(v.z), round(v.w));
+    public PointI4(Vector4 p) {
+        this(round(p.x), round(p.y), round(p.z), round(p.w));
     }
 
-    public PointI4(PointI4 v) {
-        this(v.x, v.y, v.z, v.w);
+    public PointI4(PointI4 p) {
+        this(p.x, p.y, p.z, p.w);
     }
 
-    public PointI4(Point4<? extends Point4<?>> v) {
-        this(v.xi(), v.yi(), v.zi(), v.zi());
+    public PointI4(Point4<? extends Point4<?>> p) {
+        this(p.xi(), p.yi(), p.zi(), p.zi());
     }
 
     @Override
@@ -136,11 +136,11 @@ public class PointI4 implements Point4<PointI4>, Json.Serializable {
     }
 
     @Override
-    public PointI4 seti(int fx, int fy, int fz, int fw) {
-        x = fx;
-        y = fy;
-        z = fz;
-        w = fw;
+    public PointI4 seti(int ix, int iy, int iz, int iw) {
+        x = ix;
+        y = iy;
+        z = iz;
+        w = iw;
         return this;
     }
 
@@ -299,20 +299,20 @@ public class PointI4 implements Point4<PointI4>, Json.Serializable {
     }
 
     /** Sets this {@code PointI4} to the value represented by the specified string according to the format of {@link #toString()}.
-     * @param v the string.
+     * @param s the string.
      * @return this vector for chaining */
-    public PointI4 fromString (String v) {
-        int s0 = v.indexOf(',', 1);
-        int s1 = v.indexOf(',', s0 + 1);
-        int s2 = v.indexOf(',', s1 + 1);
-        if (s0 != -1 && s1 != -1  && s2 != -1 && v.charAt(0) == '(' && v.charAt(v.length() - 1) == ')') {
-            int x = Integer.parseInt(v.substring(1, s0));
-            int y = Integer.parseInt(v.substring(s0 + 1, s1));
-            int z = Integer.parseInt(v.substring(s1 + 1, s2));
-            int w = Integer.parseInt(v.substring(s2 + 1, v.length() - 1));
+    public PointI4 fromString (String s) {
+        int s0 = s.indexOf(',', 1);
+        int s1 = s.indexOf(',', s0 + 1);
+        int s2 = s.indexOf(',', s1 + 1);
+        if (s0 != -1 && s1 != -1  && s2 != -1 && s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
+            int x = Integer.parseInt(s.substring(1, s0));
+            int y = Integer.parseInt(s.substring(s0 + 1, s1));
+            int z = Integer.parseInt(s.substring(s1 + 1, s2));
+            int w = Integer.parseInt(s.substring(s2 + 1, s.length() - 1));
             return this.set(x, y, z, w);
         }
-        throw new IllegalArgumentException("Not a valid format for a PointI4: " + v);
+        throw new IllegalArgumentException("Not a valid format for a PointI4: " + s);
     }
 
 }

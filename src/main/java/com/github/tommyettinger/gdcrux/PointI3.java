@@ -28,20 +28,20 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Seriali
         super(round(x), round(y), round(z));
     }
 
-    public PointI3(GridPoint3 v) {
-        super(v);
+    public PointI3(GridPoint3 p) {
+        super(p);
     }
 
-    public PointI3(Vector3 v) {
-        super(round(v.x), round(v.y), round(v.z));
+    public PointI3(Vector3 p) {
+        super(round(p.x), round(p.y), round(p.z));
     }
 
-    public PointI3(PointI3 v) {
-        super(v);
+    public PointI3(PointI3 p) {
+        super(p);
     }
 
-    public PointI3(Point3<? extends Point3<?>> v) {
-        this(v.xi(), v.yi(), v.zi());
+    public PointI3(Point3<? extends Point3<?>> p) {
+        this(p.xi(), p.yi(), p.zi());
     }
 
     /**
@@ -107,8 +107,8 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Seriali
     }
 
     @Override
-    public boolean isUnit(float v) {
-        return MathUtils.isEqual(Math.abs(x) + Math.abs(y) + Math.abs(z), 1, v);
+    public boolean isUnit(float tolerance) {
+        return MathUtils.isEqual(Math.abs(x) + Math.abs(y) + Math.abs(z), 1, tolerance);
     }
 
     @Override
@@ -117,8 +117,8 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Seriali
     }
 
     @Override
-    public boolean isZero(float v) {
-        return MathUtils.isZero(x, v) && MathUtils.isZero(y, v) && MathUtils.isZero(z, v);
+    public boolean isZero(float tolerance) {
+        return MathUtils.isZero(x, tolerance) && MathUtils.isZero(y, tolerance) && MathUtils.isZero(z, tolerance);
     }
 
     @Override
@@ -319,17 +319,17 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Seriali
     }
 
     /** Sets this {@code PointI3} to the value represented by the specified string according to the format of {@link #toString()}.
-     * @param v the string.
+     * @param s the string.
      * @return this vector for chaining */
-    public PointI3 fromString (String v) {
-        int s0 = v.indexOf(',', 1);
-        int s1 = v.indexOf(',', s0 + 1);
-        if (s0 != -1 && s1 != -1 && v.charAt(0) == '(' && v.charAt(v.length() - 1) == ')') {
-            int x = Integer.parseInt(v.substring(1, s0));
-            int y = Integer.parseInt(v.substring(s0 + 1, s1));
-            int z = Integer.parseInt(v.substring(s1 + 1, v.length() - 1));
+    public PointI3 fromString (String s) {
+        int s0 = s.indexOf(',', 1);
+        int s1 = s.indexOf(',', s0 + 1);
+        if (s0 != -1 && s1 != -1 && s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
+            int x = Integer.parseInt(s.substring(1, s0));
+            int y = Integer.parseInt(s.substring(s0 + 1, s1));
+            int z = Integer.parseInt(s.substring(s1 + 1, s.length() - 1));
             return this.set(x, y, z);
         }
-        throw new IllegalArgumentException("Not a valid format for a PointI3: " + v);
+        throw new IllegalArgumentException("Not a valid format for a PointI3: " + s);
     }
 }

@@ -20,20 +20,20 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, Json.Serializab
         super(x, y);
     }
 
-    public PointF2(Vector2 v) {
-        super(v);
+    public PointF2(Vector2 p) {
+        super(p);
     }
 
-    public PointF2(GridPoint2 v) {
-        super(v.x, v.y);
+    public PointF2(GridPoint2 p) {
+        super(p.x, p.y);
     }
 
-    public PointF2(PointF2 v) {
-        super(v);
+    public PointF2(PointF2 p) {
+        super(p);
     }
 
-    public PointF2(Point2<? extends Point2<?>> v) {
-        this(v.x(), v.y());
+    public PointF2(Point2<? extends Point2<?>> p) {
+        this(p.x(), p.y());
     }
 
     /**
@@ -146,15 +146,15 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, Json.Serializab
     }
 
     /** Sets this {@code PointF2} to the value represented by the specified string according to the format of {@link #toString()}.
-     * @param v the string.
+     * @param s the string.
      * @return this vector for chaining */
-    public PointF2 fromString (String v) {
-        int s0 = v.indexOf(',', 1);
-        if (s0 != -1 && v.charAt(0) == '(' && v.charAt(v.length() - 1) == ')') {
-            float x = Float.parseFloat(v.substring(1, s0));
-            float y = Float.parseFloat(v.substring(s0 + 1, v.length() - 1));
+    public PointF2 fromString (String s) {
+        int s0 = s.indexOf(',', 1);
+        if (s0 != -1 && s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
+            float x = Float.parseFloat(s.substring(1, s0));
+            float y = Float.parseFloat(s.substring(s0 + 1, s.length() - 1));
             return this.set(x, y);
         }
-        throw new IllegalArgumentException("Not a valid format for a PointF2: " + v);
+        throw new IllegalArgumentException("Not a valid format for a PointF2: " + s);
     }
 }
