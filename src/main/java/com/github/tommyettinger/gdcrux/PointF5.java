@@ -1,10 +1,12 @@
 package com.github.tommyettinger.gdcrux;
 
-import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.github.tommyettinger.crux.Point5;
+
+import java.util.Random;
 
 /**
  * The same as {@link Vector5}, just implementing {@link Point5} and {@link Json.Serializable}.
@@ -29,6 +31,22 @@ public class PointF5 extends Vector5 implements Point5<PointF5>, Json.Serializab
 
     public PointF5(Point5<? extends Point5<?>> p) {
         this(p.x(), p.y(), p.z(), p.w(), p.u());
+    }
+
+    public PointF5(float[] values) {
+        super(values);
+    }
+
+    public PointF5(Vector2 vector, float z, float w, float u) {
+        super(vector, z, w, u);
+    }
+
+    public PointF5(Vector3 vector, float w, float u) {
+        super(vector, w, u);
+    }
+
+    public PointF5(Vector4 vector, float u) {
+        super(vector, u);
     }
 
     /**
@@ -152,12 +170,171 @@ public class PointF5 extends Vector5 implements Point5<PointF5>, Json.Serializab
     }
 
     @Override
-    public Vector5 setToRandomDirection() {
-        return set((float) Distributor.normal(MathUtils.random.nextLong()),
-                (float) Distributor.normal(MathUtils.random.nextLong()),
-                (float) Distributor.normal(MathUtils.random.nextLong()),
-                (float) Distributor.normal(MathUtils.random.nextLong()),
-                (float) Distributor.normal(MathUtils.random.nextLong())).nor();
+    public PointF5 set(Vector5 vector) {
+        super.set(vector);
+        return this;
+    }
+
+    @Override
+    public PointF5 set(float[] values) {
+        super.set(values);
+        return this;
+    }
+
+    @Override
+    public PointF5 set(Vector2 vector, float z, float w, float u) {
+        super.set(vector, z, w, u);
+        return this;
+    }
+
+    @Override
+    public PointF5 set(Vector3 vector, float w, float u) {
+        super.set(vector, w, u);
+        return this;
+    }
+
+    @Override
+    public PointF5 set(Vector4 vector, float u) {
+        super.set(vector, u);
+        return this;
+    }
+
+    @Override
+    public PointF5 add(Vector5 vector) {
+        super.add(vector);
+        return this;
+    }
+
+    @Override
+    public PointF5 add(float x, float y, float z, float w, float u) {
+        super.add(x, y, z, w, u);
+        return this;
+    }
+
+    @Override
+    public PointF5 add(float value) {
+        super.add(value);
+        return this;
+    }
+
+    @Override
+    public PointF5 sub(Vector5 vector) {
+        super.sub(vector);
+        return this;
+    }
+
+    @Override
+    public PointF5 sub(float x, float y, float z, float w, float u) {
+        super.sub(x, y, z, w, u);
+        return this;
+    }
+
+    @Override
+    public PointF5 sub(float value) {
+        super.sub(value);
+        return this;
+    }
+
+    @Override
+    public PointF5 scl(float scalar) {
+        super.scl(scalar);
+        return this;
+    }
+
+    @Override
+    public PointF5 scl(Vector5 other) {
+        super.scl(other);
+        return this;
+    }
+
+    @Override
+    public PointF5 scl(float vx, float vy, float vz, float vw, float vu) {
+        super.scl(vx, vy, vz, vw, vu);
+        return this;
+    }
+
+    @Override
+    public PointF5 mulAdd(Vector5 vec, float scalar) {
+        super.mulAdd(vec, scalar);
+        return this;
+    }
+
+    @Override
+    public PointF5 mulAdd(Vector5 vec, Vector5 mulVec) {
+        super.mulAdd(vec, mulVec);
+        return this;
+    }
+
+    @Override
+    public PointF5 nor() {
+        super.nor();
+        return this;
+    }
+
+    @Override
+    public PointF5 lerp(Vector5 target, float alpha) {
+        super.lerp(target, alpha);
+        return this;
+    }
+
+    @Override
+    public PointF5 interpolate(Vector5 target, float alpha, Interpolation interpolator) {
+        super.interpolate(target, alpha, interpolator);
+        return this;
+    }
+
+    @Override
+    public PointF5 limit(float limit) {
+        super.limit(limit);
+        return this;
+    }
+
+    @Override
+    public PointF5 limit2(float limit2) {
+        super.limit2(limit2);
+        return this;
+    }
+
+    @Override
+    public PointF5 setLength(float len) {
+        super.setLength(len);
+        return this;
+    }
+
+    @Override
+    public PointF5 setLength2(float len2) {
+        super.setLength2(len2);
+        return this;
+    }
+
+    @Override
+    public PointF5 clamp(float min, float max) {
+        super.clamp(min, max);
+        return this;
+    }
+
+    @Override
+    public PointF5 setToRandomDirection() {
+        super.setToRandomDirection();
+        return this;
+    }
+
+    @Override
+    public PointF5 setToRandomDirection(Random random) {
+        super.setToRandomDirection(random);
+        return this;
+    }
+
+    @Override
+    public PointF5 clampEach(float min, float max) {
+        super.clampEach(min, max);
+        return this;
+    }
+
+    @Override
+    public PointF5 fract() {
+        super.fract();
+        return this;
     }
 
     @Override
