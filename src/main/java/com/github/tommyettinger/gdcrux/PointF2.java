@@ -1,11 +1,12 @@
 package com.github.tommyettinger.gdcrux;
 
-import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.*;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.github.tommyettinger.crux.Point2;
+
+import java.util.Random;
 
 /**
  * The same as {@link Vector2}, just implementing {@link Point2} and {@link Json.Serializable}.
@@ -117,6 +118,201 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, Json.Serializab
     public PointF2 set(float x, float y){
         this.x = x;
         this.y = y;
+        return this;
+    }
+
+    @Override
+    public PointF2 set(Vector2 v) {
+        super.set(v);
+        return this;
+    }
+
+    @Override
+    public PointF2 sub(Vector2 v) {
+        super.sub(v);
+        return this;
+    }
+
+    @Override
+    public PointF2 sub(float x, float y) {
+        super.sub(x, y);
+        return this;
+    }
+
+    @Override
+    public PointF2 nor() {
+        super.nor();
+        return this;
+    }
+
+    @Override
+    public PointF2 add(Vector2 v) {
+        super.add(v);
+        return this;
+    }
+
+    @Override
+    public PointF2 add(float x, float y) {
+        super.add(x, y);
+        return this;
+    }
+
+    @Override
+    public PointF2 scl(float scalar) {
+        super.scl(scalar);
+        return this;
+    }
+
+    @Override
+    public PointF2 scl(float x, float y) {
+        super.scl(x, y);
+        return this;
+    }
+
+    @Override
+    public PointF2 scl(Vector2 v) {
+        super.scl(v);
+        return this;
+    }
+
+    @Override
+    public PointF2 mulAdd(Vector2 vec, float scalar) {
+        super.mulAdd(vec, scalar);
+        return this;
+    }
+
+    @Override
+    public PointF2 mulAdd(Vector2 vec, Vector2 mulVec) {
+        super.mulAdd(vec, mulVec);
+        return this;
+    }
+
+    @Override
+    public PointF2 limit(float limit) {
+        super.limit(limit);
+        return this;
+    }
+
+    @Override
+    public PointF2 limit2(float limit2) {
+        super.limit2(limit2);
+        return this;
+    }
+
+    @Override
+    public PointF2 clamp(float min, float max) {
+        super.clamp(min, max);
+        return this;
+    }
+
+    @Override
+    public PointF2 setLength(float len) {
+        super.setLength(len);
+        return this;
+    }
+
+    @Override
+    public PointF2 setLength2(float len2) {
+        super.setLength2(len2);
+        return this;
+    }
+
+    @Override
+    public PointF2 mul(Matrix3 mat) {
+        super.mul(mat);
+        return this;
+    }
+
+    @Override
+    public PointF2 setAngleDeg(float degrees) {
+        super.setAngleDeg(degrees);
+        return this;
+    }
+
+    @Override
+    public PointF2 setAngleRad(float radians) {
+        super.setAngleRad(radians);
+        return this;
+    }
+
+    @Override
+    public PointF2 rotateDeg(float degrees) {
+        super.rotateDeg(degrees);
+        return this;
+    }
+
+    @Override
+    public PointF2 rotateRad(float radians) {
+        super.rotateRad(radians);
+        return this;
+    }
+
+    @Override
+    public PointF2 rotateAroundDeg(Vector2 reference, float degrees) {
+        super.rotateAroundDeg(reference, degrees);
+        return this;
+    }
+
+    @Override
+    public PointF2 rotateAroundRad(Vector2 reference, float radians) {
+        super.rotateAroundRad(reference, radians);
+        return this;
+    }
+
+    @Override
+    public PointF2 rotate90(int dir) {
+        super.rotate90(dir);
+        return this;
+    }
+
+    @Override
+    public PointF2 lerp(Vector2 target, float alpha) {
+        super.lerp(target, alpha);
+        return this;
+    }
+
+    @Override
+    public PointF2 interpolate(Vector2 target, float alpha, Interpolation interpolation) {
+        super.interpolate(target, alpha, interpolation);
+        return this;
+    }
+
+    @Override
+    public PointF2 setToRandomDirection() {
+        return setToRandomDirection(MathUtils.random);
+    }
+
+    public PointF2 setToRandomDirection(Random random) {
+        float theta = random.nextFloat() * MathUtils.PI2;
+        return this.set(MathUtils.cos(theta), MathUtils.sin(theta));
+    }
+
+    /**
+     * For each component, this clamps it between min and max, inclusive.
+     * @param min the minimum value allowable for any component, inclusive
+     * @param max the maximum value allowable for any component, inclusive
+     * @return this, after modifications
+     */
+    public PointF2 clampEach (float min, float max) {
+        x = Math.min(Math.max(x, min), max);
+        y = Math.min(Math.max(y, min), max);
+        return this;
+    }
+
+    /**
+     * Sets each component so it only has a fractional value, by subtracting the floor from each component.
+     * This produces a non-negative float for each component, between 0.0 inclusive and 1.0 exclusive, unless a
+     * component is outside the safe range for {@link MathUtils#floor(float)} (-16384.0 at the lowest).
+     * <pre>
+     * The result of fract() for a component with a value of  1.25 will be 0.25 .
+     * The result of fract() for a component with a value of -1.25 will be 0.75 .
+     * </pre>
+     *
+     * @return this, after modifications
+     */
+    public PointF2 fract () {
+        x -= MathUtils.floor(x);
+        y -= MathUtils.floor(y);
         return this;
     }
 
