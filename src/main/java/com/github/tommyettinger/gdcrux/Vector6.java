@@ -6,11 +6,11 @@ import com.badlogic.gdx.utils.NumberUtils;
 
 import java.util.Random;
 
-/** Encapsulates a 5D vector. Allows chaining operations by returning a reference to itself in all modification methods.
+/** Encapsulates a 6D vector. Allows chaining operations by returning a reference to itself in all modification methods.
  * @author badlogicgames@gmail.com
  * @author Antz
  * @author Tommy Ettinger */
-public class Vector5 implements Vector<Vector5> {
+public class Vector6 implements Vector<Vector6> {
     /** the x-component of this vector **/
     public float x;
     /** the y-component of this vector **/
@@ -21,186 +21,225 @@ public class Vector5 implements Vector<Vector5> {
     public float w;
     /** the u-component of this vector **/
     public float u;
+    /** the v-component of this vector **/
+    public float v;
 
     /**
      * A reference vector with x=1 and all other components 0; DO NOT MODIFY THIS OBJECT.
      * You should copy this, such as by using {@link #cpy()}, before making any alterations.
      */
-    public final static Vector5 X = new Vector5(1, 0, 0, 0, 0);
+    public final static Vector6 X = new Vector6(1, 0, 0, 0, 0, 0);
     /**
      * A reference vector with y=1 and all other components 0; DO NOT MODIFY THIS OBJECT.
      * You should copy this, such as by using {@link #cpy()}, before making any alterations.
      */
-    public final static Vector5 Y = new Vector5(0, 1, 0, 0, 0);
+    public final static Vector6 Y = new Vector6(0, 1, 0, 0, 0, 0);
     /**
      * A reference vector with z=1 and all other components 0; DO NOT MODIFY THIS OBJECT.
      * You should copy this, such as by using {@link #cpy()}, before making any alterations.
      */
-    public final static Vector5 Z = new Vector5(0, 0, 1, 0, 0);
+    public final static Vector6 Z = new Vector6(0, 0, 1, 0, 0, 0);
     /**
      * A reference vector with w=1 and all other components 0; DO NOT MODIFY THIS OBJECT.
      * You should copy this, such as by using {@link #cpy()}, before making any alterations.
      */
-    public final static Vector5 W = new Vector5(0, 0, 0, 1, 0);
+    public final static Vector6 W = new Vector6(0, 0, 0, 1, 0, 0);
     /**
      * A reference vector with u=1 and all other components 0; DO NOT MODIFY THIS OBJECT.
      * You should copy this, such as by using {@link #cpy()}, before making any alterations.
      */
-    public final static Vector5 U = new Vector5(0, 0, 0, 0, 1);
+    public final static Vector6 U = new Vector6(0, 0, 0, 0, 1, 0);
+    /**
+     * A reference vector with v=1 and all other components 0; DO NOT MODIFY THIS OBJECT.
+     * You should copy this, such as by using {@link #cpy()}, before making any alterations.
+     */
+    public final static Vector6 V = new Vector6(0, 0, 0, 0, 0, 1);
     /**
      * A reference vector with all components 0; DO NOT MODIFY THIS OBJECT.
      * You should copy this, such as by using {@link #cpy()}, before making any alterations.
      */
-    public final static Vector5 Zero = new Vector5(0, 0, 0, 0, 0);
+    public final static Vector6 Zero = new Vector6(0, 0, 0, 0, 0, 0);
 
-    /** Constructs a vector at (0,0,0,0,0) */
-    public Vector5 () {
+    /** Constructs a vector at (0,0,0,0,0,0) */
+    public Vector6() {
     }
 
-    /** Creates a vector with the given components.
-     * @param x The x-component
-     * @param y The y-component
-     * @param z The z-component
-     * @param w The w-component
-     * @param u The u-component */
-    public Vector5 (float x, float y, float z, float w, float u) {
-        this.set(x, y, z, w, u);
-    }
-
-    /** Creates a vector from the given Vector5.
-     * @param vector The vector */
-    public Vector5 (final Vector5 vector) {
-        this.set(vector.x, vector.y, vector.z, vector.w, vector.u);
-    }
-
-    /** Creates a vector from the given array. The array must have at least 5 elements.
-     *
-     * @param values The array */
-    public Vector5 (final float[] values) {
-        this.set(values[0], values[1], values[2], values[3], values[4]);
-    }
-
-    /** Creates a vector from the given Vector2 and z-, w-, and u-components.
-     *
-     * @param vector The vector
-     * @param z The z-component
-     * @param w The w-component
-     * @param u The u-component */
-    public Vector5 (final Vector2 vector, float z, float w, float u) {
-        this.set(vector.x, vector.y, z, w, u);
-    }
-
-    /** Creates a vector from the given Vector3 and w- and u-components.
-     *
-     * @param vector The vector
-     * @param w The w-component
-     * @param u The u-component */
-    public Vector5 (final Vector3 vector, float w, float u) {
-        this.set(vector.x, vector.y, vector.z, w, u);
-    }
-
-    /** Creates a vector from the given Vector4 and u-component.
-     *
-     * @param vector The vector
-     * @param u The u-component */
-    public Vector5 (final Vector4 vector, float u) {
-        this.set(vector.x, vector.y, vector.z, vector.w, u);
-    }
-
-    /** Sets the vector to the given components.
+    /**
+     * Creates a vector with the given components.
      *
      * @param x The x-component
      * @param y The y-component
      * @param z The z-component
      * @param w The w-component
      * @param u The u-component
-     * @return this vector for chaining */
-    public Vector5 set (float x, float y, float z, float w, float u) {
+     * @param v The v-component
+     */
+    public Vector6(float x, float y, float z, float w, float u, float v) {
+        this.set(x, y, z, w, u, v);
+    }
+
+    /** Creates a vector from the given Vector6.
+     * @param vector The vector */
+    public Vector6(final Vector6 vector) {
+        this.set(vector.x, vector.y, vector.z, vector.w, vector.u, vector.v);
+    }
+
+    /** Creates a vector from the given array. The array must have at least 6 elements.
+     *
+     * @param values The array */
+    public Vector6(final float[] values) {
+        this.set(values[0], values[1], values[2], values[3], values[4], values[5]);
+    }
+
+    /** Creates a vector from the given Vector2 and z-, w-, u-, and v-components.
+     *
+     * @param vector The vector
+     * @param z The z-component
+     * @param w The w-component
+     * @param u The u-component
+     * @param v The v-component */
+    public Vector6(final Vector2 vector, float z, float w, float u, float v) {
+        this.set(vector.x, vector.y, z, w, u, v);
+    }
+
+    /** Creates a vector from the given Vector3 and w-, u-, and v-components.
+     *
+     * @param vector The vector
+     * @param w The w-component
+     * @param u The u-component
+     * @param v The v-component */
+    public Vector6(final Vector3 vector, float w, float u, float v) {
+        this.set(vector.x, vector.y, vector.z, w, u, v);
+    }
+
+    /** Creates a vector from the given Vector4 and u- and v-components.
+     *
+     * @param vector The vector
+     * @param u The u-component
+     * @param v The v-component */
+    public Vector6(final Vector4 vector, float u, float v) {
+        this.set(vector.x, vector.y, vector.z, vector.w, u, v);
+    }
+
+    /** Creates a vector from the given Vector5 and v-component.
+     *
+     * @param vector The vector
+     * @param v The v-component */
+    public Vector6(final Vector5 vector, float v) {
+        this.set(vector.x, vector.y, vector.z, vector.w, vector.u, v);
+    }
+
+    /**
+     * Sets the vector to the given components.
+     *
+     * @param x The x-component
+     * @param y The y-component
+     * @param z The z-component
+     * @param w The w-component
+     * @param u The u-component
+     * @param v The v-component
+     * @return this vector for chaining
+     */
+    public Vector6 set (float x, float y, float z, float w, float u, float v) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.w = w;
         this.u = u;
+        this.v = v;
         return this;
     }
 
     @Override
-    public Vector5 set (final Vector5 vector) {
-        return this.set(vector.x, vector.y, vector.z, vector.w, vector.u);
+    public Vector6 set (final Vector6 vector) {
+        return this.set(vector.x, vector.y, vector.z, vector.w, vector.u, vector.v);
     }
 
-    /** Sets the components from the array. The array must have at least 5 elements.
+    /** Sets the components from the array. The array must have at least 6 elements.
      *
      * @param values The array
      * @return this vector for chaining */
-    public Vector5 set (final float[] values) {
-        return this.set(values[0], values[1], values[2], values[3], values[4]);
+    public Vector6 set (final float[] values) {
+        return this.set(values[0], values[1], values[2], values[3], values[4], values[5]);
     }
 
-    /** Sets the components to the given Vector2, z-, w-, and u-components.
+    /** Sets the components to the given Vector2, z-, w-, u-, and v-components.
      *
      * @param vector The vector2 holding the x- and y-components
      * @param z The z-component
      * @param w The w-component
      * @param u The u-component
+     * @param v The v-component
      * @return This vector for chaining */
-    public Vector5 set (final Vector2 vector, float z, float w, float u) {
-        return this.set(vector.x, vector.y, z, w, u);
+    public Vector6 set (final Vector2 vector, float z, float w, float u, float v) {
+        return this.set(vector.x, vector.y, z, w, u, v);
     }
 
-    /** Sets the components of the given Vector3 and w- and u-components.
+    /** Sets the components of the given Vector3 and w-, u-, and v-components.
      *
      * @param vector The vector
      * @param w The w-component
      * @param u The u-component
+     * @param v The v-component
      * @return This vector for chaining */
-    public Vector5 set (final Vector3 vector, float w, float u) {
-        return this.set(vector.x, vector.y, vector.z, w, u);
+    public Vector6 set (final Vector3 vector, float w, float u, float v) {
+        return this.set(vector.x, vector.y, vector.z, w, u, v);
     }
 
-    /** Sets the components of the given Vector4 and u-component.
+    /** Sets the components of the given Vector4 and u- and v-components.
      *
      * @param vector The vector
      * @param u The u-component
+     * @param v The v-component
      * @return This vector for chaining */
-    public Vector5 set (final Vector4 vector, float u) {
-        return this.set(vector.x, vector.y, vector.z, vector.w, u);
+    public Vector6 set (final Vector4 vector, float u, float v) {
+        return this.set(vector.x, vector.y, vector.z, vector.w, u, v);
+    }
+
+    /** Sets the components of the given Vector5 and v-component.
+     *
+     * @param vector The vector
+     * @param v The v-component
+     * @return This vector for chaining */
+    public Vector6 set (final Vector5 vector, float v) {
+        return this.set(vector.x, vector.y, vector.z, vector.w, vector.u, v);
     }
 
     @Override
-    public Vector5 setToRandomDirection () {
+    public Vector6 setToRandomDirection () {
         return setToRandomDirection(MathUtils.random);
     }
 
     /**
-     * Sets this Vector5 to a random unit vector (a random point on the surface of the radius-1 hypersphere in 5D
+     * Sets this Vector6 to a random unit vector (a random point on the surface of the radius-1 hypersphere in 6D
      * space). This overload can take a seeded random number generator, or you could pass {@link MathUtils#random} to
      * quickly use a non-seeded random number generator.
      * @param random a non-null Random or subclass of Random, such as {@link RandomXS128}
      * @return this, after modifications
      */
-    public Vector5 setToRandomDirection (Random random) {
+    public Vector6 setToRandomDirection (Random random) {
         // The algorithm here is #19 at
         // https://extremelearning.com.au/how-to-generate-uniformly-random-points-on-n-spheres-and-n-balls/ .
-        // It is the only recommended way to randomly generate a point on the surface of the unit 5D hypersphere.
+        // It is the only recommended way to randomly generate a point on the surface of the unit 6D hypersphere.
 
         x = (float)Distributor.normal(random.nextLong());
         y = (float)Distributor.normal(random.nextLong());
         z = (float)Distributor.normal(random.nextLong());
         w = (float)Distributor.normal(random.nextLong());
         u = (float)Distributor.normal(random.nextLong());
-        // Once we normalize five normal-distributed floats, we have a point on the unit hypersphere's surface.
+        v = (float)Distributor.normal(random.nextLong());
+        // Once we normalize six normal-distributed floats, we have a point on the unit hypersphere's surface.
         return this.nor();
     }
 
     @Override
-    public Vector5 cpy () {
-        return new Vector5(this);
+    public Vector6 cpy () {
+        return new Vector6(this);
     }
 
     @Override
-    public Vector5 add (final Vector5 vector) {
-        return this.add(vector.x, vector.y, vector.z, vector.w, vector.u);
+    public Vector6 add (final Vector6 vector) {
+        return this.add(vector.x, vector.y, vector.z, vector.w, vector.u, vector.v);
     }
 
     /** Adds the given components to this vector.
@@ -209,22 +248,23 @@ public class Vector5 implements Vector<Vector5> {
      * @param z Added to the z-component
      * @param w Added to the w-component
      * @param u Added to the u-component
+     * @param v Added to the v-component
      * @return This vector for chaining. */
-    public Vector5 add (float x, float y, float z, float w, float u) {
-        return this.set(this.x + x, this.y + y, this.z + z, this.w + w, this.u + u);
+    public Vector6 add (float x, float y, float z, float w, float u, float v) {
+        return this.set(this.x + x, this.y + y, this.z + z, this.w + w, this.u + u, this.v + v);
     }
 
-    /** Adds the given value to all five components of the vector.
+    /** Adds the given value to all six components of the vector.
      *
      * @param value The value
      * @return This vector for chaining */
-    public Vector5 add (float value) {
-        return this.set(this.x + value, this.y + value, this.z + value, this.w + value, this.u + value);
+    public Vector6 add (float value) {
+        return this.set(this.x + value, this.y + value, this.z + value, this.w + value, this.u + value, this.v + value);
     }
 
     @Override
-    public Vector5 sub (final Vector5 vector) {
-        return this.sub(vector.x, vector.y, vector.z, vector.w, vector.u);
+    public Vector6 sub (final Vector6 vector) {
+        return this.sub(vector.x, vector.y, vector.z, vector.w, vector.u, vector.v);
     }
 
     /** Subtracts the given components from this vector.
@@ -234,33 +274,34 @@ public class Vector5 implements Vector<Vector5> {
      * @param z Subtracted from the z-component
      * @param w Subtracted from the w-component
      * @param u Subtracted from the u-component
+     * @param v Subtracted from the v-component
      * @return This vector for chaining */
-    public Vector5 sub (float x, float y, float z, float w, float u) {
-        return this.set(this.x - x, this.y - y, this.z - z, this.w - w, this.u - u);
+    public Vector6 sub (float x, float y, float z, float w, float u, float v) {
+        return this.set(this.x - x, this.y - y, this.z - z, this.w - w, this.u - u, this.v - v);
     }
 
     /** Subtracts the given value from all components of this vector.
      *
      * @param value The value
      * @return This vector for chaining */
-    public Vector5 sub (float value) {
-        return this.set(this.x - value, this.y - value, this.z - value, this.w - value, this.u - value);
+    public Vector6 sub (float value) {
+        return this.set(this.x - value, this.y - value, this.z - value, this.w - value, this.u - value, this.v - value);
     }
 
     /** Multiplies each component of this vector by the given scalar.
      * @param scalar Each component will be multiplied by this float
      * @return This vector for chaining */
     @Override
-    public Vector5 scl (float scalar) {
-        return this.set(this.x * scalar, this.y * scalar, this.z * scalar, this.w * scalar, this.u * scalar);
+    public Vector6 scl (float scalar) {
+        return this.set(this.x * scalar, this.y * scalar, this.z * scalar, this.w * scalar, this.u * scalar, this.v * scalar);
     }
 
     /** Multiplies each component of this vector by the corresponding component in other.
      * @param other Another vector that will be used to scale this
      * @return This vector for chaining */
     @Override
-    public Vector5 scl (final Vector5 other) {
-        return this.set(x * other.x, y * other.y, z * other.z, w * other.w, u * other.u);
+    public Vector6 scl (final Vector6 other) {
+        return this.set(x * other.x, y * other.y, z * other.z, w * other.w, u * other.u, v * other.v);
     }
 
     /** Scales this vector by the given values.
@@ -269,113 +310,121 @@ public class Vector5 implements Vector<Vector5> {
      * @param vz Multiplied with the Z value
      * @param vw Multiplied with the W value
      * @param vu Multiplied with the U value
+     * @param vv Multiplied with the V value
      * @return This vector for chaining */
-    public Vector5 scl (float vx, float vy, float vz, float vw, float vu) {
-        return this.set(this.x * vx, this.y * vy, this.z * vz, this.w * vw, this.w * vu);
+    public Vector6 scl (float vx, float vy, float vz, float vw, float vu, float vv) {
+        return this.set(this.x * vx, this.y * vy, this.z * vz, this.w * vw, this.u * vu, this.v * vv);
     }
 
     @Override
-    public Vector5 mulAdd (Vector5 vec, float scalar) {
+    public Vector6 mulAdd (Vector6 vec, float scalar) {
         this.x += vec.x * scalar;
         this.y += vec.y * scalar;
         this.z += vec.z * scalar;
         this.w += vec.w * scalar;
         this.u += vec.u * scalar;
+        this.v += vec.v * scalar;
         return this;
     }
 
     @Override
-    public Vector5 mulAdd (Vector5 vec, Vector5 mulVec) {
+    public Vector6 mulAdd (Vector6 vec, Vector6 mulVec) {
         this.x += vec.x * mulVec.x;
         this.y += vec.y * mulVec.y;
         this.z += vec.z * mulVec.z;
         this.w += vec.w * mulVec.w;
         this.u += vec.u * mulVec.u;
+        this.v += vec.v * mulVec.v;
         return this;
     }
 
-    /** Gets the Euclidean length in 5D space from the origin to the given coordinates.
+    /** Gets the Euclidean length in 6D space from the origin to the given coordinates.
      *  @return The Euclidean length */
-    public static float len (final float x, final float y, final float z, float w, float u) {
-        return (float)Math.sqrt(x * x + y * y + z * z + w * w + u * u);
+    public static float len (final float x, final float y, final float z, float w, float u, float v) {
+        return (float)Math.sqrt(x * x + y * y + z * z + w * w + u * u + v * v);
     }
 
     @Override
     public float len () {
-        return (float)Math.sqrt(x * x + y * y + z * z + w * w + u * u);
+        return (float)Math.sqrt(x * x + y * y + z * z + w * w + u * u + v * v);
     }
 
-    /** Gets the squared Euclidean length in 5D space from the origin to the given coordinates.
+    /** Gets the squared Euclidean length in 6D space from the origin to the given coordinates.
      * @return The squared Euclidean length */
-    public static float len2 (final float x, final float y, final float z, float w, float u) {
-        return x * x + y * y + z * z + w * w + u * u;
+    public static float len2 (final float x, final float y, final float z, float w, float u, float v) {
+        return x * x + y * y + z * z + w * w + u * u + v * v;
     }
 
     @Override
     public float len2 () {
-        return x * x + y * y + z * z + w * w + u * u;
+        return x * x + y * y + z * z + w * w + u * u + v * v;
     }
 
     /** Returns true if this vector and the vector parameter have identical components.
      * @param vector The other vector
      * @return Whether this and the other vector are equal with exact precision */
-    public boolean idt (final Vector5 vector) {
-        return x == vector.x && y == vector.y && z == vector.z && w == vector.w && u == vector.u;
+    public boolean idt (final Vector6 vector) {
+        return x == vector.x && y == vector.y && z == vector.z && w == vector.w && u == vector.u && v == vector.v;
     }
 
-    /** Gets the Euclidean length in 5D space between the two specified vectors.
+    /** Gets the Euclidean length in 6D space between the two specified vectors.
      *  @return The Euclidean distance between the two specified vectors */
-    public static float dst (final float x1, final float y1, final float z1, final float w1, final float u1,
-                             final float x2, final float y2, final float z2, final float w2, final float u2) {
+    public static float dst (final float x1, final float y1, final float z1, final float w1, final float u1, final float v1,
+                             final float x2, final float y2, final float z2, final float w2, final float u2, final float v2) {
         final float a = x2 - x1;
         final float b = y2 - y1;
         final float c = z2 - z1;
         final float d = w2 - w1;
         final float e = u2 - u1;
-        return (float)Math.sqrt(a * a + b * b + c * c + d * d + e * e);
+        final float f = v2 - v1;
+        return (float)Math.sqrt(a * a + b * b + c * c + d * d + e * e + f * f);
     }
 
     @Override
-    public float dst (final Vector5 vector) {
+    public float dst (final Vector6 vector) {
         final float a = vector.x - x;
         final float b = vector.y - y;
         final float c = vector.z - z;
         final float d = vector.w - w;
         final float e = vector.u - u;
-        return (float)Math.sqrt(a * a + b * b + c * c + d * d + e * e);
+        final float f = vector.v - v;
+        return (float)Math.sqrt(a * a + b * b + c * c + d * d + e * e + f * f);
     }
 
-    /** Gets the distance between this vector and the given 5D coordinates.
+    /** Gets the distance between this vector and the given 6D coordinates.
      *  @return the distance between this point and the given point */
-    public float dst (float x, float y, float z, float w, float u) {
+    public float dst (float x, float y, float z, float w, float u, float v) {
         final float a = x - this.x;
         final float b = y - this.y;
         final float c = z - this.z;
         final float d = w - this.w;
         final float e = u - this.u;
-        return (float)Math.sqrt(a * a + b * b + c * c + d * d + e * e);
+        final float f = v - this.v;
+        return (float)Math.sqrt(a * a + b * b + c * c + d * d + e * e + f * f);
     }
 
-    /** Gets the squared Euclidean length in 5D space between the two specified vectors.
+    /** Gets the squared Euclidean length in 6D space between the two specified vectors.
      * @return the squared distance between the given points */
-    public static float dst2 (final float x1, final float y1, final float z1, final float w1, final float u1,
-                              final float x2, final float y2, final float z2, final float w2, final float u2) {
+    public static float dst2 (final float x1, final float y1, final float z1, final float w1, final float u1, final float v1,
+                              final float x2, final float y2, final float z2, final float w2, final float u2, final float v2) {
         final float a = x2 - x1;
         final float b = y2 - y1;
         final float c = z2 - z1;
         final float d = w2 - w1;
         final float e = u2 - u1;
-        return a * a + b * b + c * c + d * d + e * e;
+        final float f = v2 - v1;
+        return a * a + b * b + c * c + d * d + e * e + f * f;
     }
 
     @Override
-    public float dst2 (Vector5 point) {
+    public float dst2 (Vector6 point) {
         final float a = point.x - x;
         final float b = point.y - y;
         final float c = point.z - z;
         final float d = point.w - w;
         final float e = point.u - u;
-        return a * a + b * b + c * c + d * d + e * e;
+        final float f = point.v - v;
+        return a * a + b * b + c * c + d * d + e * e + f * f;
     }
 
     /** Returns the squared distance between this point and the given point.
@@ -384,44 +433,47 @@ public class Vector5 implements Vector<Vector5> {
      * @param z The z-component of the other point
      * @param w The w-component of the other point
      * @param u The u-component of the other point
+     * @param v The v-component of the other point
      * @return The squared distance */
-    public float dst2 (float x, float y, float z, float w, float u) {
+    public float dst2 (float x, float y, float z, float w, float u, float v) {
         final float a = x - this.x;
         final float b = y - this.y;
         final float c = z - this.z;
         final float d = w - this.w;
         final float e = u - this.u;
-        return a * a + b * b + c * c + d * d + e * e;
+        final float f = v - this.v;
+        return a * a + b * b + c * c + d * d + e * e + f * f;
     }
 
     @Override
-    public Vector5 nor () {
+    public Vector6 nor () {
         final float len2 = this.len2();
         if (len2 == 0f || len2 == 1f) return this;
         return this.scl(1f / (float)Math.sqrt(len2));
     }
 
-    /** Gets the dot product of two 5D vectors, each given as 5 components.
+    /** Gets the dot product of two 6D vectors, each given as 6 components.
      * @return The dot product of the two vectors */
-    public static float dot (float x1, float y1, float z1, float w1, float u1,
-                             float x2, float y2, float z2, float w2, float u2) {
-        return x1 * x2 + y1 * y2 + z1 * z2 + w1 * w2 + u1 * u2;
+    public static float dot (float x1, float y1, float z1, float w1, float u1, float v1,
+                             float x2, float y2, float z2, float w2, float u2, float v2) {
+        return x1 * x2 + y1 * y2 + z1 * z2 + w1 * w2 + u1 * u2 + v1 * v2;
     }
 
     @Override
-    public float dot (final Vector5 vector) {
-        return x * vector.x + y * vector.y + z * vector.z + w * vector.w + u * vector.u;
+    public float dot (final Vector6 vector) {
+        return x * vector.x + y * vector.y + z * vector.z + w * vector.w + u * vector.u + v * vector.v;
     }
 
-    /** Returns the dot product between this and the given vector (given as 5 components).
+    /** Returns the dot product between this and the given vector (given as 6 components).
      * @param x The x-component of the other vector
      * @param y The y-component of the other vector
      * @param z The z-component of the other vector
      * @param w The w-component of the other vector
      * @param u The u-component of the other vector
+     * @param v The v-component of the other vector
      * @return The dot product */
-    public float dot (float x, float y, float z, float w, float u) {
-        return this.x * x + this.y * y + this.z * z + this.w * w + this.u * u;
+    public float dot (float x, float y, float z, float w, float u, float v) {
+        return this.x * x + this.y * y + this.z * z + this.w * w + this.u * u + this.v * v;
     }
 
     @Override
@@ -436,7 +488,7 @@ public class Vector5 implements Vector<Vector5> {
 
     @Override
     public boolean isZero () {
-        return x == 0 && y == 0 && z == 0 && w == 0 && u == 0;
+        return x == 0 && y == 0 && z == 0 && w == 0 && u == 0 && v == 0;
     }
 
     @Override
@@ -454,12 +506,12 @@ public class Vector5 implements Vector<Vector5> {
      * @param epsilon used as the tolerance when values may be very close to 0 or each other
      * @return true if this vector is in line with the other vector (either in the same or the opposite direction) */
     @Override
-    public boolean isOnLine (Vector5 other, float epsilon) {
+    public boolean isOnLine (Vector6 other, float epsilon) {
         // The algorithm used here is based on the one in yama, a C++ math library.
         // https://github.com/iboB/yama/blob/f08a71c6fd84df5eed62557000373f17f14e1ec7/include/yama/vector4.hpp#L566-L598
         // This code uses a flags variable to avoid allocating a float array.
         int flags = 0;
-        float dx = 0, dy = 0, dz = 0, dw = 0, du = 0;
+        float dx = 0, dy = 0, dz = 0, dw = 0, du = 0, dv = 0;
 
         if (MathUtils.isZero(x, epsilon)) {
             if (!MathUtils.isZero(other.x, epsilon)) {
@@ -501,6 +553,14 @@ public class Vector5 implements Vector<Vector5> {
             du = u / other.u;
             flags |= 16;
         }
+        if (MathUtils.isZero(v, epsilon)) {
+            if (!MathUtils.isZero(other.v, epsilon)) {
+                return false;
+            }
+        } else {
+            dv = v / other.v;
+            flags |= 32;
+        }
 
         int lowest = flags & -flags;
         flags ^= lowest;
@@ -512,7 +572,8 @@ public class Vector5 implements Vector<Vector5> {
             case 1:  left = dx; break;
             case 2:  left = dy; break;
             case 4:  left = dz; break;
-            default: left = dw; break;
+            case 8:  left = dw; break;
+            default: left = du; break;
         }
 
         while (true){
@@ -521,7 +582,8 @@ public class Vector5 implements Vector<Vector5> {
                 case 2:  on &= MathUtils.isEqual(left, dy, epsilon); break;
                 case 4:  on &= MathUtils.isEqual(left, dz, epsilon); break;
                 case 8:  on &= MathUtils.isEqual(left, dw, epsilon); break;
-                default: on &= MathUtils.isEqual(left, du, epsilon); break;
+                case 16: on &= MathUtils.isEqual(left, du, epsilon); break;
+                default: on &= MathUtils.isEqual(left, dv, epsilon); break;
             }
             flags ^= next;
             if(flags == 0) {
@@ -535,129 +597,132 @@ public class Vector5 implements Vector<Vector5> {
      * @param other the other vector to draw a line into from the origin
      * @return true if this vector is in line with the other vector (either in the same or the opposite direction) */
     @Override
-    public boolean isOnLine (Vector5 other) {
+    public boolean isOnLine (Vector6 other) {
         return isOnLine(other, MathUtils.FLOAT_ROUNDING_ERROR);
     }
 
     /**
      * Returns true if this vector is collinear with the other vector
-     * ({@link #isOnLine(Vector5, float)} and {@link #hasSameDirection(Vector5)}).
+     * ({@link #isOnLine(Vector6, float)} and {@link #hasSameDirection(Vector6)}).
      * @param other the other vector to draw a line into from the origin
      * @param epsilon used as the tolerance when values may be very close to 0 or each other
-     * @return true if this vector is collinear with the other vector ({@link #isOnLine(Vector5, float)} and
-     *         {@link #hasSameDirection(Vector5)}). */
+     * @return true if this vector is collinear with the other vector ({@link #isOnLine(Vector6, float)} and
+     *         {@link #hasSameDirection(Vector6)}). */
     @Override
-    public boolean isCollinear (Vector5 other, float epsilon) {
+    public boolean isCollinear (Vector6 other, float epsilon) {
         return isOnLine(other, epsilon) && hasSameDirection(other);
     }
 
     /**
      * Returns true if this vector is collinear with the other vector
-     * ({@link #isOnLine(Vector5)} and {@link #hasSameDirection(Vector5)}).
+     * ({@link #isOnLine(Vector6)} and {@link #hasSameDirection(Vector6)}).
      * @param other the other vector to draw a line into from the origin
-     * @return true if this vector is collinear with the other vector ({@link #isOnLine(Vector5)} and
-     *         {@link #hasSameDirection(Vector5)}). */
+     * @return true if this vector is collinear with the other vector ({@link #isOnLine(Vector6)} and
+     *         {@link #hasSameDirection(Vector6)}). */
     @Override
-    public boolean isCollinear (Vector5 other) {
+    public boolean isCollinear (Vector6 other) {
         return isOnLine(other) && hasSameDirection(other);
     }
 
     /**
      * Returns true if this vector is collinear opposite with the other vector
-     * ({@link #isOnLine(Vector5, float)} and {@link #hasOppositeDirection(Vector5)}).
+     * ({@link #isOnLine(Vector6, float)} and {@link #hasOppositeDirection(Vector6)}).
      * @param other the other vector to draw a line into from the origin
      * @param epsilon used as the tolerance when values may be very close to 0 or each other
-     * @return true if this vector is opposite collinear with the other vector ({@link #isOnLine(Vector5, float)} and
-     *         {@link #hasOppositeDirection(Vector5)}). */
+     * @return true if this vector is opposite collinear with the other vector ({@link #isOnLine(Vector6, float)} and
+     *         {@link #hasOppositeDirection(Vector6)}). */
     @Override
-    public boolean isCollinearOpposite (Vector5 other, float epsilon) {
+    public boolean isCollinearOpposite (Vector6 other, float epsilon) {
         return isOnLine(other, epsilon) && hasOppositeDirection(other);
     }
 
     /**
      * Returns true if this vector is collinear opposite with the other vector
-     * ({@link #isOnLine(Vector5)} and {@link #hasOppositeDirection(Vector5)}).
+     * ({@link #isOnLine(Vector6)} and {@link #hasOppositeDirection(Vector6)}).
      * @param other the other vector to draw a line into from the origin
-     * @return true if this vector is collinear opposite with the other vector ({@link #isOnLine(Vector5)} and
-     *         {@link #hasOppositeDirection(Vector5)}). */
+     * @return true if this vector is collinear opposite with the other vector ({@link #isOnLine(Vector6)} and
+     *         {@link #hasOppositeDirection(Vector6)}). */
     @Override
-    public boolean isCollinearOpposite (Vector5 other) {
+    public boolean isCollinearOpposite (Vector6 other) {
         return isOnLine(other) && hasOppositeDirection(other);
     }
 
     @Override
-    public boolean isPerpendicular (Vector5 vector) {
+    public boolean isPerpendicular (Vector6 vector) {
         return MathUtils.isZero(dot(vector));
     }
 
     @Override
-    public boolean isPerpendicular (Vector5 vector, float epsilon) {
+    public boolean isPerpendicular (Vector6 vector, float epsilon) {
         return MathUtils.isZero(dot(vector), epsilon);
     }
 
     @Override
-    public boolean hasSameDirection (Vector5 vector) {
+    public boolean hasSameDirection (Vector6 vector) {
         return dot(vector) > 0;
     }
 
     @Override
-    public boolean hasOppositeDirection (Vector5 vector) {
+    public boolean hasOppositeDirection (Vector6 vector) {
         return dot(vector) < 0;
     }
 
     @Override
-    public Vector5 lerp (final Vector5 target, float alpha) {
+    public Vector6 lerp (final Vector6 target, float alpha) {
         x += alpha * (target.x - x);
         y += alpha * (target.y - y);
         z += alpha * (target.z - z);
         w += alpha * (target.w - w);
         u += alpha * (target.u - u);
+        v += alpha * (target.v - v);
         return this;
     }
 
     @Override
-    public Vector5 interpolate (Vector5 target, float alpha, Interpolation interpolator) {
+    public Vector6 interpolate (Vector6 target, float alpha, Interpolation interpolator) {
         return lerp(target, interpolator.apply(alpha));
     }
 
-    /** Converts this {@code Vector5} to a string in the format {@code (x,y,z,w,u)}. Strings with this exact format can
+    /** Converts this {@code Vector6} to a string in the format {@code (x,y,z,w,u,v)}. Strings with this exact format can
      * be parsed with {@link #fromString(String)}.
      * @return a string representation of this object. */
     @Override
     public String toString () {
-        return "(" + x + "," + y + "," + z + "," + w + "," + u + ")";
+        return "(" + x + "," + y + "," + z + "," + w + "," + u + "," + v + ")";
     }
 
-    /** Sets this {@code Vector5} to the value represented by the specified string according to the format of {@link #toString()}.
+    /** Sets this {@code Vector6} to the value represented by the specified string according to the format of {@link #toString()}.
      * @param s the string.
      * @return this vector, set with the value from s, for chaining */
-    public Vector5 fromString (String s) {
+    public Vector6 fromString (String s) {
         int s0 = s.indexOf(',', 1);
         int s1 = s.indexOf(',', s0 + 1);
         int s2 = s.indexOf(',', s1 + 1);
         int s3 = s.indexOf(',', s2 + 1);
-        if (s0 != -1 && s1 != -1 && s2 != -1 && s3 != -1 && s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
+        int s4 = s.indexOf(',', s3 + 1);
+        if (s0 != -1 && s1 != -1 && s2 != -1 && s3 != -1 && s4 != -1 && s.charAt(0) == '(' && s.charAt(s.length() - 1) == ')') {
             try {
                 float x = Float.parseFloat(s.substring(1, s0));
                 float y = Float.parseFloat(s.substring(s0 + 1, s1));
                 float z = Float.parseFloat(s.substring(s1 + 1, s2));
                 float w = Float.parseFloat(s.substring(s2 + 1, s3));
-                float u = Float.parseFloat(s.substring(s3 + 1, s.length() - 1));
-                return this.set(x, y, z, w, u);
+                float u = Float.parseFloat(s.substring(s3 + 1, s4));
+                float v = Float.parseFloat(s.substring(s4 + 1, s.length() - 1));
+                return this.set(x, y, z, w, u, v);
             } catch (NumberFormatException ex) {
                 // Throw a GdxRuntimeException...
             }
         }
-        throw new GdxRuntimeException("Malformed Vector5: " + s);
+        throw new GdxRuntimeException("Malformed Vector6: " + s);
     }
 
     @Override
-    public Vector5 limit (float limit) {
+    public Vector6 limit (float limit) {
         return limit2(limit * limit);
     }
 
     @Override
-    public Vector5 limit2 (float limit2) {
+    public Vector6 limit2 (float limit2) {
         float len2 = len2();
         if (len2 > limit2) {
             scl((float)Math.sqrt(limit2 / len2));
@@ -666,18 +731,18 @@ public class Vector5 implements Vector<Vector5> {
     }
 
     @Override
-    public Vector5 setLength (float len) {
+    public Vector6 setLength (float len) {
         return setLength2(len * len);
     }
 
     @Override
-    public Vector5 setLength2 (float len2) {
+    public Vector6 setLength2 (float len2) {
         float oldLen2 = len2();
         return (oldLen2 == 0 || oldLen2 == len2) ? this : scl((float)Math.sqrt(len2 / oldLen2));
     }
 
     @Override
-    public Vector5 clamp (float min, float max) {
+    public Vector6 clamp (float min, float max) {
         final float len2 = len2();
         if (len2 == 0f) return this;
         float max2 = max * max;
@@ -693,12 +758,13 @@ public class Vector5 implements Vector<Vector5> {
      * @param max the maximum value allowable for any component, inclusive
      * @return this, after modifications
      */
-    public Vector5 clampEach (float min, float max) {
+    public Vector6 clampEach (float min, float max) {
         x = Math.min(Math.max(x, min), max);
         y = Math.min(Math.max(y, min), max);
         z = Math.min(Math.max(z, min), max);
         w = Math.min(Math.max(w, min), max);
         u = Math.min(Math.max(u, min), max);
+        v = Math.min(Math.max(v, min), max);
         return this;
     }
 
@@ -713,12 +779,13 @@ public class Vector5 implements Vector<Vector5> {
      *
      * @return this, after modifications
      */
-    public Vector5 fract () {
+    public Vector6 fract () {
         x -= MathUtils.floor(x);
         y -= MathUtils.floor(y);
         z -= MathUtils.floor(z);
         w -= MathUtils.floor(w);
         u -= MathUtils.floor(u);
+        v -= MathUtils.floor(v);
         return this;
     }
 
@@ -731,6 +798,7 @@ public class Vector5 implements Vector<Vector5> {
         result = prime * result + NumberUtils.floatToIntBits(z);
         result = prime * result + NumberUtils.floatToIntBits(w);
         result = prime * result + NumberUtils.floatToIntBits(u);
+        result = prime * result + NumberUtils.floatToIntBits(v);
         return result;
     }
 
@@ -739,23 +807,25 @@ public class Vector5 implements Vector<Vector5> {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        Vector5 other = (Vector5)obj;
+        Vector6 other = (Vector6)obj;
         if (NumberUtils.floatToIntBits(x) != NumberUtils.floatToIntBits(other.x)) return false;
         if (NumberUtils.floatToIntBits(y) != NumberUtils.floatToIntBits(other.y)) return false;
         if (NumberUtils.floatToIntBits(z) != NumberUtils.floatToIntBits(other.z)) return false;
         if (NumberUtils.floatToIntBits(w) != NumberUtils.floatToIntBits(other.w)) return false;
         if (NumberUtils.floatToIntBits(u) != NumberUtils.floatToIntBits(other.u)) return false;
+        if (NumberUtils.floatToIntBits(v) != NumberUtils.floatToIntBits(other.v)) return false;
         return true;
     }
 
     @Override
-    public boolean epsilonEquals (final Vector5 other, float epsilon) {
+    public boolean epsilonEquals (final Vector6 other, float epsilon) {
         if (other == null) return false;
         if (Math.abs(other.x - x) > epsilon) return false;
         if (Math.abs(other.y - y) > epsilon) return false;
         if (Math.abs(other.z - z) > epsilon) return false;
         if (Math.abs(other.w - w) > epsilon) return false;
         if (Math.abs(other.u - u) > epsilon) return false;
+        if (Math.abs(other.v - v) > epsilon) return false;
         return true;
     }
 
@@ -765,14 +835,16 @@ public class Vector5 implements Vector<Vector5> {
      * @param z z component of the other vector to compare
      * @param w w component of the other vector to compare
      * @param u u component of the other vector to compare
+     * @param v v component of the other vector to compare
      * @param epsilon how much error to tolerate and still consider two floats equal
      * @return whether the vectors are the same. */
-    public boolean epsilonEquals (float x, float y, float z, float w, float u, float epsilon) {
+    public boolean epsilonEquals (float x, float y, float z, float w, float u, float v, float epsilon) {
         if (Math.abs(x - this.x) > epsilon) return false;
         if (Math.abs(y - this.y) > epsilon) return false;
         if (Math.abs(z - this.z) > epsilon) return false;
         if (Math.abs(w - this.w) > epsilon) return false;
         if (Math.abs(u - this.u) > epsilon) return false;
+        if (Math.abs(v - this.v) > epsilon) return false;
         return true;
     }
 
@@ -780,7 +852,7 @@ public class Vector5 implements Vector<Vector5> {
      *
      * @param other other vector to compare
      * @return true if the vectors are equal, otherwise false */
-    public boolean epsilonEquals (final Vector5 other) {
+    public boolean epsilonEquals (final Vector6 other) {
         return epsilonEquals(other, MathUtils.FLOAT_ROUNDING_ERROR);
     }
 
@@ -791,18 +863,20 @@ public class Vector5 implements Vector<Vector5> {
      * @param z z component of the other vector to compare
      * @param w w component of the other vector to compare
      * @param u u component of the other vector to compare
+     * @param v v component of the other vector to compare
      * @return true if the vectors are equal, otherwise false */
-    public boolean epsilonEquals (float x, float y, float z, float w, float u) {
-        return epsilonEquals(x, y, z, w, u, MathUtils.FLOAT_ROUNDING_ERROR);
+    public boolean epsilonEquals (float x, float y, float z, float w, float u, float v) {
+        return epsilonEquals(x, y, z, w, u, v, MathUtils.FLOAT_ROUNDING_ERROR);
     }
 
     @Override
-    public Vector5 setZero () {
+    public Vector6 setZero () {
         this.x = 0;
         this.y = 0;
         this.z = 0;
         this.w = 0;
         this.u = 0;
+        this.v = 0;
         return this;
     }
 }
