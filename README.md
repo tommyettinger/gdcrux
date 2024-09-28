@@ -11,9 +11,27 @@ where [crux](https://github.com/tommyettinger/crux) comes in: it supplies severa
 6D, as well as a parent superinterface that allows generalizing across all its point interfaces.
 
 This library provides subclasses of the aforementioned libGDX point types, and makes those subclasses implement crux
-interfaces.
+interfaces. It also provides additions to libGDX Vector types (Vector5 and Vector6) for higher dimensions. These Vector
+types are extended by the crux types PointF5 and PointF6. As support, there's PointMaker, to make creating points as
+easy as calling `pt(1, 2, 3)`, and Distributor, which is used to produce normal-distributed variables (mostly used
+internally, to set vectors to random directions in 5D and 6D).
 
-That's all.
+# Get?
+
+The 0.0.1 release should be available shortly on Maven Central. Using Gradle:
+
+```
+api "com.github.tommyettinger:gdcrux:0.0.1"
+```
+
+On GWT, you would also need this in your html module:
+```
+api "com.github.tommyettinger:gdcrux:0.0.1:sources"
+```
+and this in your GdxDefinition.gwt.xml file:
+```xml
+<inherits name="com.github.tommyettinger.gdcrux" />
+```
 
 # License?
 [Apache License 2.0](LICENSE).
