@@ -222,12 +222,12 @@ public class Vector6 implements Vector<Vector6> {
         // https://extremelearning.com.au/how-to-generate-uniformly-random-points-on-n-spheres-and-n-balls/ .
         // It is the only recommended way to randomly generate a point on the surface of the unit 6D hypersphere.
 
-        x = (float)Distributor.normal(random.nextLong());
-        y = (float)Distributor.normal(random.nextLong());
-        z = (float)Distributor.normal(random.nextLong());
-        w = (float)Distributor.normal(random.nextLong());
-        u = (float)Distributor.normal(random.nextLong());
-        v = (float)Distributor.normal(random.nextLong());
+        x = Distributor.normalF(random.nextInt());
+        y = Distributor.normalF(random.nextInt());
+        z = Distributor.normalF(random.nextInt());
+        w = Distributor.normalF(random.nextInt());
+        u = Distributor.normalF(random.nextInt());
+        v = Distributor.normalF(random.nextInt());
         // Once we normalize six normal-distributed floats, we have a point on the unit hypersphere's surface.
         return this.nor();
     }

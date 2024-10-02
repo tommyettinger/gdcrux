@@ -332,10 +332,10 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, Json.Serializab
 
     public PointF4 setToRandomDirection(Random random) {
         return set(
-                (float) Distributor.normal(random.nextLong()),
-                (float) Distributor.normal(random.nextLong()),
-                (float) Distributor.normal(random.nextLong()),
-                (float) Distributor.normal(random.nextLong())).nor();
+                Distributor.normalF(random.nextInt()),
+                Distributor.normalF(random.nextInt()),
+                Distributor.normalF(random.nextInt()),
+                Distributor.normalF(random.nextInt())).nor();
     }
 
     @Override
