@@ -24,9 +24,10 @@ The 0.0.2 release should be available on Maven Central. Using Gradle:
 api "com.github.tommyettinger:gdcrux:0.0.2"
 ```
 
-On GWT, you would also need this in your html module:
+On GWT with libGDX, you would also need this in your html module:
 ```
-api "com.github.tommyettinger:gdcrux:0.0.2:sources"
+implementation "com.github.tommyettinger:crux:0.1.0:sources"
+implementation "com.github.tommyettinger:gdcrux:0.0.2:sources"
 ```
 and this in your GdxDefinition.gwt.xml file:
 ```xml
