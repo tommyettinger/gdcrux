@@ -7,12 +7,17 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.github.tommyettinger.crux.Point2;
 
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+
 import static com.badlogic.gdx.math.MathUtils.round;
 
 /**
  * The same as {@link GridPoint2}, just implementing {@link Point2} and {@link Json.Serializable}.
  */
-public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Serializable {
+public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Serializable, Externalizable {
 
     public PointI2() {
         super();
@@ -276,6 +281,18 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Seriali
     public void read(Json json, JsonValue jsonData) {
         this.x = jsonData.getInt("x");
         this.y = jsonData.getInt("y");
+    }
+
+    @GwtIncompatible
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeInt(x);
+        out.writeInt(y);
+    }
+
+    @GwtIncompatible
+    public void readExternal(ObjectInput in) throws IOException {
+        x = in.readInt();
+        y = in.readInt();
     }
 
     /** Converts this {@code PointI2} to a string in the format {@code (x,y,z)}.

@@ -4,9 +4,14 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.github.tommyettinger.crux.Point6;
 
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+
 import static com.badlogic.gdx.math.MathUtils.round;
 
-public class PointI6 implements Point6<PointI6>, Json.Serializable {
+public class PointI6 implements Point6<PointI6>, Json.Serializable, Externalizable {
 
     public int x, y, z, w, u, v;
 
@@ -362,6 +367,26 @@ public class PointI6 implements Point6<PointI6>, Json.Serializable {
         this.w = jsonData.getInt("w");
         this.u = jsonData.getInt("u");
         this.v = jsonData.getInt("v");
+    }
+
+    @GwtIncompatible
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeInt(x);
+        out.writeInt(y);
+        out.writeInt(z);
+        out.writeInt(w);
+        out.writeInt(u);
+        out.writeInt(v);
+    }
+
+    @GwtIncompatible
+    public void readExternal(ObjectInput in) throws IOException {
+        x = in.readInt();
+        y = in.readInt();
+        z = in.readInt();
+        w = in.readInt();
+        u = in.readInt();
+        v = in.readInt();
     }
 
     /** Converts this {@code PointI6} to a string in the format {@code (x,y,z,w,u,v)}.
