@@ -9,12 +9,16 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.github.tommyettinger.crux.Point6;
 
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Random;
 
 /**
  * The same as {@link Vector6}, just implementing {@link Point6} and {@link Json.Serializable}.
  */
-public class PointF6 extends Vector6 implements Point6<PointF6>, Json.Serializable {
+public class PointF6 extends Vector6 implements Point6<PointF6>, Json.Serializable, Externalizable {
 
     public PointF6() {
         super();
@@ -387,6 +391,26 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, Json.Serializab
         this.w = jsonData.getFloat("w");
         this.u = jsonData.getFloat("u");
         this.v = jsonData.getFloat("v");
+    }
+
+    @GwtIncompatible
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeFloat(x);
+        out.writeFloat(y);
+        out.writeFloat(z);
+        out.writeFloat(w);
+        out.writeFloat(u);
+        out.writeFloat(v);
+    }
+
+    @GwtIncompatible
+    public void readExternal(ObjectInput in) throws IOException {
+        x = in.readFloat();
+        y = in.readFloat();
+        z = in.readFloat();
+        w = in.readFloat();
+        u = in.readFloat();
+        v = in.readFloat();
     }
 
     /** Converts this {@code PointF6} to a string in the format {@code (x,y,z,w,u)}.

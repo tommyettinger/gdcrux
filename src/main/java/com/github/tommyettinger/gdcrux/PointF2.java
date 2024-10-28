@@ -6,12 +6,16 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.github.tommyettinger.crux.Point2;
 
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Random;
 
 /**
  * The same as {@link Vector2}, just implementing {@link Point2} and {@link Json.Serializable}.
  */
-public class PointF2 extends Vector2 implements Point2<PointF2>, Json.Serializable {
+public class PointF2 extends Vector2 implements Point2<PointF2>, Json.Serializable, Externalizable {
 
     public PointF2() {
         super();
@@ -332,6 +336,18 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, Json.Serializab
     public void read(Json json, JsonValue jsonData) {
         this.x = jsonData.getFloat("x");
         this.y = jsonData.getFloat("y");
+    }
+
+    @GwtIncompatible
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeFloat(x);
+        out.writeFloat(y);
+    }
+
+    @GwtIncompatible
+    public void readExternal(ObjectInput in) throws IOException {
+        x = in.readFloat();
+        y = in.readFloat();
     }
 
     /** Converts this {@code PointF2} to a string in the format {@code (x,y)}.
