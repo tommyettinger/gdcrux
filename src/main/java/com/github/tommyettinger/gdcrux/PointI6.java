@@ -324,6 +324,51 @@ public class PointI6 implements Point6<PointI6>, Json.Serializable, Externalizab
         return this;
     }
 
+    @SuppressWarnings("lossy-conversions")
+    public PointI6 scl(Point6<?> pt) {
+        x *= pt.x();
+        y *= pt.y();
+        z *= pt.z();
+        w *= pt.w();
+        u *= pt.u();
+        v *= pt.v();
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI6 scl(float value) {
+        x *= value;
+        y *= value;
+        z *= value;
+        w *= value;
+        u *= value;
+        v *= value;
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI6 scl(float ox, float oy, float oz, float ow, float ou, float ov) {
+        x *= ox;
+        y *= oy;
+        z *= oz;
+        w *= ow;
+        u *= ou;
+        v *= ov;
+        return this;
+    }
+
+    public PointI6 mul(Point6<?> pt) {
+        return scl(pt);
+    }
+
+    public PointI6 mul(float value) {
+        return scl(value);
+    }
+
+    public PointI6 mul(float ox, float oy, float oz, float ow, float ou, float ov) {
+        return scl(ox, oy, oz, ow, ou, ov);
+    }
+
     @Override
     public float dst2(PointI6 pt) {
         float x = pt.x - this.x;

@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.github.tommyettinger.crux.Point2;
 import com.github.tommyettinger.crux.Point3;
+import com.github.tommyettinger.crux.Point4;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -300,6 +301,42 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Seriali
     public PointI3 sub(int x, int y, int z) {
         super.sub(x, y, z);
         return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI3 scl(Point3<?> pt) {
+        x *= pt.x();
+        y *= pt.y();
+        z *= pt.z();
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI3 scl(float value) {
+        x *= value;
+        y *= value;
+        z *= value;
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI3 scl(float ox, float oy, float oz) {
+        x *= ox;
+        y *= oy;
+        z *= oz;
+        return this;
+    }
+
+    public PointI3 mul(Point3<?> pt) {
+        return scl(pt);
+    }
+
+    public PointI3 mul(float value) {
+        return scl(value);
+    }
+
+    public PointI3 mul(float ox, float oy, float oz) {
+        return scl(ox, oy, oz);
     }
 
     @Override

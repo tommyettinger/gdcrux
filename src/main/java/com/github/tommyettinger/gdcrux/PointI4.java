@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector4;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.github.tommyettinger.crux.Point4;
+import com.github.tommyettinger.crux.Point5;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -257,6 +258,45 @@ public class PointI4 implements Point4<PointI4>, Json.Serializable, Externalizab
         z *= oz;
         w *= ow;
         return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI4 scl(Point4<?> pt) {
+        x *= pt.x();
+        y *= pt.y();
+        z *= pt.z();
+        w *= pt.w();
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI4 scl(float value) {
+        x *= value;
+        y *= value;
+        z *= value;
+        w *= value;
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI4 scl(float ox, float oy, float oz, float ow) {
+        x *= ox;
+        y *= oy;
+        z *= oz;
+        w *= ow;
+        return this;
+    }
+
+    public PointI4 mul(Point4<?> pt) {
+        return scl(pt);
+    }
+
+    public PointI4 mul(float value) {
+        return scl(value);
+    }
+
+    public PointI4 mul(float ox, float oy, float oz, float ow) {
+        return scl(ox, oy, oz, ow);
     }
 
     @Override

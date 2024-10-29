@@ -3,6 +3,7 @@ package com.github.tommyettinger.gdcrux;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.github.tommyettinger.crux.Point5;
+import com.github.tommyettinger.crux.Point6;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -287,6 +288,48 @@ public class PointI5 implements Point5<PointI5>, Json.Serializable, Externalizab
         w *= ow;
         u *= ou;
         return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI5 scl(Point5<?> pt) {
+        x *= pt.x();
+        y *= pt.y();
+        z *= pt.z();
+        w *= pt.w();
+        u *= pt.u();
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI5 scl(float value) {
+        x *= value;
+        y *= value;
+        z *= value;
+        w *= value;
+        u *= value;
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI5 scl(float ox, float oy, float oz, float ow, float ou) {
+        x *= ox;
+        y *= oy;
+        z *= oz;
+        w *= ow;
+        u *= ou;
+        return this;
+    }
+
+    public PointI5 mul(Point5<?> pt) {
+        return scl(pt);
+    }
+
+    public PointI5 mul(float value) {
+        return scl(value);
+    }
+
+    public PointI5 mul(float ox, float oy, float oz, float ow, float ou) {
+        return scl(ox, oy, oz, ow, ou);
     }
 
     @Override
