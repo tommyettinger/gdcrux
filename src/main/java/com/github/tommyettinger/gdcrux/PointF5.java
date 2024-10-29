@@ -378,6 +378,42 @@ public class PointF5 extends Vector5 implements Point5<PointF5>, Json.Serializab
         return this;
     }
 
+    /**
+     * Gets the component at the specified index.
+     * Kotlin-compatible using square-bracket indexing.
+     * @param index which component to get, in order
+     * @return the component
+     */
+    @SuppressWarnings("DefaultNotLastCaseInSwitch")
+    public float get (int index) {
+        switch (index){
+            default: return x;
+            case 1 : return y;
+            case 2 : return z;
+            case 3 : return w;
+            case 4 : return u;
+        }
+    }
+
+    /**
+     * Sets the component at the specified index to the specified value.
+     * Kotlin-compatible using square-bracket indexing with assignment.
+     * @param index which component to set, in order
+     * @param value the value to assign at index
+     * @return this, for chaining
+     */
+    @SuppressWarnings("DefaultNotLastCaseInSwitch")
+    public PointF5 set(int index, float value){
+        switch (index){
+            default: x = value;
+            case 1 : y = value;
+            case 2 : z = value;
+            case 3 : w = value;
+            case 4 : u = value;
+        }
+        return this;
+    }
+
     @Override
     public int hashCode() {
         final int h = NumberUtils.floatToIntBits(x) + 53 * NumberUtils.floatToIntBits(y) +
