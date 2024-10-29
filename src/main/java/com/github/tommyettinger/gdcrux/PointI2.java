@@ -300,6 +300,36 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Seriali
         return scl(ox, oy);
     }
 
+    /**
+     * Gets the component at the specified index.
+     * Kotlin-compatible using square-bracket indexing.
+     * @param index which component to get, in order
+     * @return the component
+     */
+    @SuppressWarnings("DefaultNotLastCaseInSwitch")
+    public int get (int index) {
+        switch (index){
+            default: return x;
+            case 1 : return y;
+        }
+    }
+
+    /**
+     * Sets the component at the specified index to the specified value.
+     * This is not Kotlin-compatible because {@link #set(int, int)} already exists.
+     * @param index which component to set, in order
+     * @param value the value to assign at index
+     * @return this, for chaining
+     */
+    @SuppressWarnings("DefaultNotLastCaseInSwitch")
+    public PointI2 setAt(int index, int value){
+        switch (index){
+            default: x = value;
+            case 1 : y = value;
+        }
+        return this;
+    }
+
     @Override
     public int hashCode() {
         return x * 0x1827F5 ^ y * 0x123C21;

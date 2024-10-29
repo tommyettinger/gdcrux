@@ -339,6 +339,38 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Seriali
         return scl(ox, oy, oz);
     }
 
+    /**
+     * Gets the component at the specified index.
+     * Kotlin-compatible using square-bracket indexing.
+     * @param index which component to get, in order
+     * @return the component
+     */
+    @SuppressWarnings("DefaultNotLastCaseInSwitch")
+    public int get (int index) {
+        switch (index){
+            default: return x;
+            case 1 : return y;
+            case 2 : return z;
+        }
+    }
+
+    /**
+     * Sets the component at the specified index to the specified value.
+     * Kotlin-compatible using square-bracket indexing with assignment.
+     * @param index which component to set, in order
+     * @param value the value to assign at index
+     * @return this, for chaining
+     */
+    @SuppressWarnings("DefaultNotLastCaseInSwitch")
+    public PointI3 set(int index, int value){
+        switch (index){
+            default: x = value;
+            case 1 : y = value;
+            case 2 : z = value;
+        }
+        return this;
+    }
+
     @Override
     public void write(Json json) {
         json.writeValue("x", x, int.class);
