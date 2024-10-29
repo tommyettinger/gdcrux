@@ -374,13 +374,12 @@ public class PointI5 implements Point5<PointI5>, Json.Serializable, Externalizab
 
     /**
      * Sets the component at the specified index to the specified value.
-     * Kotlin-compatible using square-bracket indexing with assignment.
      * @param index which component to set, in order
      * @param value the value to assign at index
      * @return this, for chaining
      */
     @SuppressWarnings("DefaultNotLastCaseInSwitch")
-    public PointI5 set(int index, int value){
+    public PointI5 setAt(int index, int value){
         switch (index){
             default: x = value;
             case 1 : y = value;

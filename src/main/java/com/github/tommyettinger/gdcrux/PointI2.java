@@ -306,22 +306,19 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, Json.Seriali
      * @param index which component to get, in order
      * @return the component
      */
-    @SuppressWarnings("DefaultNotLastCaseInSwitch")
     public int get (int index) {
-        switch (index){
-            default: return x;
-            case 1 : return y;
-        }
+        if (index == 1)
+            return y;
+        return x;
     }
 
     /**
      * Sets the component at the specified index to the specified value.
-     * This is not Kotlin-compatible because {@link #set(int, int)} already exists.
      * @param index which component to set, in order
      * @param value the value to assign at index
      * @return this, for chaining
      */
-    @SuppressWarnings("DefaultNotLastCaseInSwitch")
+    @SuppressWarnings({"DefaultNotLastCaseInSwitch", "SwitchStatementWithTooFewBranches"})
     public PointI2 setAt(int index, int value){
         switch (index){
             default: x = value;

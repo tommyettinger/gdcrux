@@ -360,23 +360,20 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, Json.Serializab
      * @param index which component to get, in order
      * @return the component
      */
-    @SuppressWarnings("DefaultNotLastCaseInSwitch")
     public float get (int index) {
-        switch (index){
-            default:  return x;
-            case 1 : return y;
-        }
+        if (index == 1)
+            return y;
+        return x;
     }
 
     /**
      * Sets the component at the specified index to the specified value.
-     * Kotlin-compatible using square-bracket indexing with assignment.
      * @param index which component to set, in order
      * @param value the value to assign at index
      * @return this, for chaining
      */
-    @SuppressWarnings("DefaultNotLastCaseInSwitch")
-    public PointF2 set(int index, float value){
+    @SuppressWarnings({"DefaultNotLastCaseInSwitch", "SwitchStatementWithTooFewBranches"})
+    public PointF2 setAt(int index, float value){
         switch (index){
             default: x = value;
             case 1 : y = value;

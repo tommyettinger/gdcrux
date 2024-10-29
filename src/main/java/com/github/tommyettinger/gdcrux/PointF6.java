@@ -423,13 +423,12 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, Json.Serializab
 
     /**
      * Sets the component at the specified index to the specified value.
-     * Kotlin-compatible using square-bracket indexing with assignment.
      * @param index which component to set, in order
      * @param value the value to assign at index
      * @return this, for chaining
      */
     @SuppressWarnings("DefaultNotLastCaseInSwitch")
-    public PointF6 set(int index, float value){
+    public PointF6 setAt(int index, float value){
         switch (index){
             default: x = value;
             case 1 : y = value;

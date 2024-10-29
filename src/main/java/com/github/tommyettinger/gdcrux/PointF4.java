@@ -396,13 +396,12 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, Json.Serializab
 
     /**
      * Sets the component at the specified index to the specified value.
-     * Kotlin-compatible using square-bracket indexing with assignment.
      * @param index which component to set, in order
      * @param value the value to assign at index
      * @return this, for chaining
      */
     @SuppressWarnings("DefaultNotLastCaseInSwitch")
-    public PointF4 set(int index, float value){
+    public PointF4 setAt(int index, float value){
         switch (index){
             default: x = value;
             case 1 : y = value;
