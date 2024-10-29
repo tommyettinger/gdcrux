@@ -410,4 +410,17 @@ public class PointI4 implements Point4<PointI4>, Json.Serializable, Externalizab
         throw new IllegalArgumentException("Not a valid format for a PointI4: " + s);
     }
 
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PointI4)) return false;
+
+        PointI4 pointI4 = (PointI4) o;
+        return x == pointI4.x && y == pointI4.y && z == pointI4.z && w == pointI4.w;
+    }
+
+    @Override
+    public int hashCode() {
+        return x * 0x1B69E1 ^ y * 0x177C0B ^ z * 0x141E5D ^ w * 0x113C31;
+    }
 }
