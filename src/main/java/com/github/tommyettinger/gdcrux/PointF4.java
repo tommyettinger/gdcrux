@@ -236,6 +236,42 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, Json.Serializab
         return this;
     }
 
+    /**
+     * Multiplies each component of this by the given scalar, in-place, and returns this.
+     * This is an alias for {@link #scl(float)}.
+     * @param scalar a float that will be multiplied with each component
+     * @return this, for chaining
+     */
+    public PointF4 mul(float scalar) {
+        super.scl(scalar);
+        return this;
+    }
+
+    /**
+     * Multiplies each component of this by the corresponding scalar, in-place, and returns this.
+     * This is an alias for {@link #scl(float, float, float, float)}.
+     * @param x a float that will be multiplied with x
+     * @param y a float that will be multiplied with y
+     * @param z a float that will be multiplied with z
+     * @param w a float that will be multiplied with w
+     * @return this, for chaining
+     */
+    public PointF4 mul(float x, float y, float z, float w) {
+        super.scl(x, y, z, w);
+        return this;
+    }
+
+    /**
+     * Multiplies each component of this by the corresponding item in {@code vec}, in-place, and returns this.
+     * This is an alias for {@link #scl(Vector4)}.
+     * @param vec a Vector4 (which can be another PointF4) that will be multiplied component-wise with this
+     * @return this, for chaining
+     */
+    public PointF4 mul(Vector4 vec) {
+        super.scl(vec);
+        return this;
+    }
+
     @Override
     public PointF4 mulAdd(Vector4 vec, float scalar) {
         super.mulAdd(vec, scalar);

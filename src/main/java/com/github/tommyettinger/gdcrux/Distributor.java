@@ -17,7 +17,8 @@ import java.util.Random;
  * and does not preserve input patterns. The Ziggurat method does get drastically closer to the correct normal
  * distribution in the trail (where very positive or very negative values are), and it is about the same speed as
  * linearNormal() and linearNormalF().
- *
+ * <br>
+ * This class is meant to be copyable without dependencies.
  */
 public final class Distributor {
 

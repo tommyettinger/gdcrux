@@ -237,6 +237,40 @@ public class PointF3 extends Vector3 implements Point3<PointF3>, Json.Serializab
         super.scl(vx, vy, vz);
         return this;
     }
+    /**
+     * Multiplies each component of this by the given scalar, in-place, and returns this.
+     * This is an alias for {@link #scl(float)}.
+     * @param scalar a float that will be multiplied with each component
+     * @return this, for chaining
+     */
+    public PointF3 mul(float scalar) {
+        super.scl(scalar);
+        return this;
+    }
+
+    /**
+     * Multiplies each component of this by the corresponding scalar, in-place, and returns this.
+     * This is an alias for {@link #scl(float, float, float)}.
+     * @param x a float that will be multiplied with x
+     * @param y a float that will be multiplied with y
+     * @param z a float that will be multiplied with z
+     * @return this, for chaining
+     */
+    public PointF3 mul(float x, float y, float z) {
+        super.scl(x, y, z);
+        return this;
+    }
+
+    /**
+     * Multiplies each component of this by the corresponding item in {@code vec}, in-place, and returns this.
+     * This is an alias for {@link #scl(Vector3)}.
+     * @param vec a Vector3 (which can be another PointF3) that will be multiplied component-wise with this
+     * @return this, for chaining
+     */
+    public PointF3 mul(Vector3 vec) {
+        super.scl(vec);
+        return this;
+    }
 
     @Override
     public PointF3 mulAdd(Vector3 vec, float scalar) {

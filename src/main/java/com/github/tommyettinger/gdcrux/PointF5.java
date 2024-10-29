@@ -256,6 +256,43 @@ public class PointF5 extends Vector5 implements Point5<PointF5>, Json.Serializab
         super.scl(vx, vy, vz, vw, vu);
         return this;
     }
+    
+    /**
+     * Multiplies each component of this by the given scalar, in-place, and returns this.
+     * This is an alias for {@link #scl(float)}.
+     * @param scalar a float that will be multiplied with each component
+     * @return this, for chaining
+     */
+    public PointF5 mul(float scalar) {
+        super.scl(scalar);
+        return this;
+    }
+
+    /**
+     * Multiplies each component of this by the corresponding scalar, in-place, and returns this.
+     * This is an alias for {@link #scl(float, float, float, float, float)}.
+     * @param x a float that will be multiplied with x
+     * @param y a float that will be multiplied with y
+     * @param z a float that will be multiplied with z
+     * @param w a float that will be multiplied with w
+     * @param u a float that will be multiplied with u
+     * @return this, for chaining
+     */
+    public PointF5 mul(float x, float y, float z, float w, float u) {
+        super.scl(x, y, z, w, u);
+        return this;
+    }
+
+    /**
+     * Multiplies each component of this by the corresponding item in {@code vec}, in-place, and returns this.
+     * This is an alias for {@link #scl(Vector5)}.
+     * @param vec a Vector5 (which can be another PointF5) that will be multiplied component-wise with this
+     * @return this, for chaining
+     */
+    public PointF5 mul(Vector5 vec) {
+        super.scl(vec);
+        return this;
+    }
 
     @Override
     public PointF5 mulAdd(Vector5 vec, float scalar) {

@@ -179,6 +179,40 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, Json.Serializab
         return this;
     }
 
+    /**
+     * Multiplies each component of this by the given scalar, in-place, and returns this.
+     * This is an alias for {@link #scl(float)}.
+     * @param scalar a float that will be multiplied with each component
+     * @return this, for chaining
+     */
+    public PointF2 mul(float scalar) {
+        super.scl(scalar);
+        return this;
+    }
+
+    /**
+     * Multiplies each component of this by the corresponding scalar, in-place, and returns this.
+     * This is an alias for {@link #scl(float, float)}.
+     * @param x a float that will be multiplied with x
+     * @param y a float that will be multiplied with y
+     * @return this, for chaining
+     */
+    public PointF2 mul(float x, float y) {
+        super.scl(x, y);
+        return this;
+    }
+
+    /**
+     * Multiplies each component of this by the corresponding item in {@code vec}, in-place, and returns this.
+     * This is an alias for {@link #scl(Vector2)}.
+     * @param vec a Vector2 (which can be another PointF2) that will be multiplied component-wise with this
+     * @return this, for chaining
+     */
+    public PointF2 mul(Vector2 vec) {
+        super.scl(vec);
+        return this;
+    }
+
     @Override
     public PointF2 mulAdd(Vector2 vec, float scalar) {
         super.mulAdd(vec, scalar);
