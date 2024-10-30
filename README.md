@@ -24,13 +24,13 @@ enables the Externalizable interface to be implemented by all Point classes here
 The latest release should be available on Maven Central. Using Gradle:
 
 ```
-api "com.github.tommyettinger:gdcrux:0.0.3"
+api "com.github.tommyettinger:gdcrux:0.0.4"
 ```
 
 On GWT with libGDX, you would also need this in your html module:
 ```
 implementation "com.github.tommyettinger:crux:0.1.0:sources"
-implementation "com.github.tommyettinger:gdcrux:0.0.3:sources"
+implementation "com.github.tommyettinger:gdcrux:0.0.4:sources"
 ```
 and this in your GdxDefinition.gwt.xml file:
 ```xml

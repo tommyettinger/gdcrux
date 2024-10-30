@@ -51,13 +51,6 @@ if (JavaVersion.current().isJava8Compatible()) {
 compileJava {
 	// The default Java language level this targets is 8, which is as low as current
     // (Java 20 and newer) JDKs will permit you to target.
-    // Targeting Java 7 is the lowest version you could need to go at this point, and
-    // to target 7 you need to be using Java 19 or lower. The default used for JitPack
-    // builds in this configuration uses Java 21 to build, so you would need to change
-    // jitpack.yml to use openjdk17 instead of openjdk21 if you really want to target 7.
-	// libGDX itself targets a mix of Java 7 (for most backends) and 8 (for LWJGL3).
-    // You must use 8 if any libraries you use need Java 8 (some that
-    // come to mind are simple-graphs and jdkgdxds, plus anything that needs LWJGL3).
     sourceCompatibility = 8
     targetCompatibility = 8
     if (JavaVersion.current().isJava9Compatible()) {
@@ -93,7 +86,6 @@ jar {
 }
 
 repositories {
-    // You can uncomment mavenLocal() if you need self-built versions, but it can be a problem with GWT or other sources dependencies.
     mavenLocal()
     mavenCentral()
     maven { url 'https://s01.oss.sonatype.org' }
@@ -106,6 +98,7 @@ repositories {
 }
 
 dependencies {
+    //noinspection GDXOutdatedVersionGradleGroovy
     api "com.badlogicgames.gdx:gdx:$gdxVersion"
     api "com.github.tommyettinger:crux:$cruxVersion"
     testImplementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
