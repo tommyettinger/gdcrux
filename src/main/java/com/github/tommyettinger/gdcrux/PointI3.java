@@ -1,14 +1,11 @@
 package com.github.tommyettinger.gdcrux;
 
-import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.GridPoint3;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
-import com.github.tommyettinger.crux.Point2;
 import com.github.tommyettinger.crux.Point3;
-import com.github.tommyettinger.crux.Point4;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -18,7 +15,9 @@ import java.io.ObjectOutput;
 import static com.badlogic.gdx.math.MathUtils.round;
 
 /**
- * The same as {@link GridPoint2}, just implementing {@link Point2} and {@link Json.Serializable}.
+ * The same as {@link GridPoint3}, just implementing {@link Point3}, {@link Json.Serializable},
+ * and {@link Externalizable}. This does have some more additions to those interfaces, such as
+ * {@link #get(int)} and {@link #setAt(int, int)}.
  */
 public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Serializable, Externalizable {
 

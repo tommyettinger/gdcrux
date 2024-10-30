@@ -16,7 +16,9 @@ import java.io.ObjectOutput;
 import java.util.Random;
 
 /**
- * The same as {@link Vector6}, just implementing {@link Point6} and {@link Json.Serializable}.
+ * The same as {@link Vector6} (from gdcrux, not libGDX), just implementing {@link Point6}, {@link Json.Serializable},
+ * and {@link Externalizable}. This does have some more additions to those interfaces, such as
+ * {@link #get(int)} and {@link #setAt(int, float)}.
  */
 public class PointF6 extends Vector6 implements Point6<PointF6>, Json.Serializable, Externalizable {
 

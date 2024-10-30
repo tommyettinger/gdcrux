@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.NumberUtils;
 import java.util.Random;
 
 /** Encapsulates a 6D vector. Allows chaining operations by returning a reference to itself in all modification methods.
+ * The fourth component is {@code w}, matching GLSL, the fifth component is {@code u}, and the sixth is {@code v}.
  * @author badlogicgames@gmail.com
  * @author Antz
  * @author Tommy Ettinger */

@@ -11,6 +11,11 @@ import java.io.ObjectOutput;
 
 import static com.badlogic.gdx.math.MathUtils.round;
 
+/**
+ * If GridPoint6 existed, this would be like it, just implementing {@link Point6}, {@link Json.Serializable},
+ * and {@link Externalizable}. This does have some more additions to those interfaces, such as
+ * {@link #get(int)} and {@link #setAt(int, int)}.
+ */
 public class PointI6 implements Point6<PointI6>, Json.Serializable, Externalizable {
 
     public int x, y, z, w, u, v;

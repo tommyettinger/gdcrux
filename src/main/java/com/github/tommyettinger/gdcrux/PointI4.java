@@ -4,7 +4,6 @@ import com.badlogic.gdx.math.Vector4;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.github.tommyettinger.crux.Point4;
-import com.github.tommyettinger.crux.Point5;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -13,6 +12,11 @@ import java.io.ObjectOutput;
 
 import static com.badlogic.gdx.math.MathUtils.round;
 
+/**
+ * If GridPoint4 existed, this would be like it, just implementing {@link Point4}, {@link Json.Serializable},
+ * and {@link Externalizable}. This does have some more additions to those interfaces, such as
+ * {@link #get(int)} and {@link #setAt(int, int)}.
+ */
 public class PointI4 implements Point4<PointI4>, Json.Serializable, Externalizable {
 
     public int x, y, z, w;

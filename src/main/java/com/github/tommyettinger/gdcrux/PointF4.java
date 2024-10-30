@@ -13,7 +13,9 @@ import java.io.ObjectOutput;
 import java.util.Random;
 
 /**
- * The same as {@link Vector4}, just implementing {@link Point4} and {@link Json.Serializable}.
+ * The same as {@link Vector4}, just implementing {@link Point4}, {@link Json.Serializable},
+ * and {@link Externalizable}. This does have some more additions to those interfaces, such as
+ * {@link #get(int)} and {@link #setAt(int, float)}.
  */
 public class PointF4 extends Vector4 implements Point4<PointF4>, Json.Serializable, Externalizable {
 
