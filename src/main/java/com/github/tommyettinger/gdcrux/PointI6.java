@@ -16,7 +16,7 @@ import static com.badlogic.gdx.math.MathUtils.round;
  * and {@link Externalizable}. This does have some more additions to those interfaces, such as
  * {@link #get(int)} and {@link #setAt(int, int)}.
  */
-public class PointI6 implements Point6<PointI6>, Json.Serializable, Externalizable {
+public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>>, Json.Serializable, Externalizable {
 
     public int x, y, z, w, u, v;
 
@@ -512,6 +512,17 @@ public class PointI6 implements Point6<PointI6>, Json.Serializable, Externalizab
 
         PointI6 pointI6 = (PointI6) o;
         return x == pointI6.x && y == pointI6.y && z == pointI6.z && w == pointI6.w && u == pointI6.u && v == pointI6.v;
+    }
+
+    public PointI6 lerp(Point6<?> target, float alpha) {
+        final float invAlpha = 1.0f - alpha;
+        this.x = (int)((x * invAlpha) + (target.x() * alpha));
+        this.y = (int)((y * invAlpha) + (target.y() * alpha));
+        this.z = (int)((z * invAlpha) + (target.z() * alpha));
+        this.w = (int)((w * invAlpha) + (target.w() * alpha));
+        this.u = (int)((u * invAlpha) + (target.u() * alpha));
+        this.v = (int)((v * invAlpha) + (target.v() * alpha));
+        return this;
     }
 
     @Override

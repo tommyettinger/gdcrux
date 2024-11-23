@@ -19,7 +19,7 @@ import static com.badlogic.gdx.math.MathUtils.round;
  * and {@link Externalizable}. This does have some more additions to those interfaces, such as
  * {@link #get(int)} and {@link #setAt(int, int)}.
  */
-public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Serializable, Externalizable {
+public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared<PointI3, Point3<?>>, Json.Serializable, Externalizable {
 
     public PointI3() {
         super();
@@ -198,11 +198,6 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Seriali
         return this;
     }
 
-    @Override
-    public int hashCode() {
-        return x * 0x1A36A9 ^ y * 0x157931 ^ z * 0x119725;
-    }
-
     public PointI3 set(float x, float y, float z){
         this.x = round(x);
         this.y = round(y);
@@ -367,6 +362,20 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, Json.Seriali
             case 2 : z = value;
         }
         return this;
+    }
+
+    @Override
+    public PointI3 lerp(Point3<?> target, float alpha) {
+        final float invAlpha = 1.0f - alpha;
+        this.x = (int)((x * invAlpha) + (target.x() * alpha));
+        this.y = (int)((y * invAlpha) + (target.y() * alpha));
+        this.z = (int)((z * invAlpha) + (target.z() * alpha));
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return x * 0x1A36A9 ^ y * 0x157931 ^ z * 0x119725;
     }
 
     @Override
