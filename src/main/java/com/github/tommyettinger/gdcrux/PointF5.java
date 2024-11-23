@@ -17,7 +17,7 @@ import java.util.Random;
  * and {@link Externalizable}. This does have some more additions to those interfaces, such as
  * {@link #get(int)} and {@link #setAt(int, float)}.
  */
-public class PointF5 extends Vector5 implements Point5<PointF5>, Json.Serializable, Externalizable {
+public class PointF5 extends Vector5 implements Point5<PointF5>, PointFShared<PointF5, Point5<?>>, Json.Serializable, Externalizable {
 
     public PointF5() {
         super();
@@ -320,10 +320,24 @@ public class PointF5 extends Vector5 implements Point5<PointF5>, Json.Serializab
         return this;
     }
 
+    public PointF5 lerp(Point5<?> target, float alpha) {
+        final float invAlpha = 1.0f - alpha;
+        this.x = (x * invAlpha) + (target.x() * alpha);
+        this.y = (y * invAlpha) + (target.y() * alpha);
+        this.z = (z * invAlpha) + (target.z() * alpha);
+        this.w = (w * invAlpha) + (target.w() * alpha);
+        this.u = (u * invAlpha) + (target.u() * alpha);
+        return this;
+    }
+
     @Override
     public PointF5 interpolate(Vector5 target, float alpha, Interpolation interpolator) {
         super.interpolate(target, alpha, interpolator);
         return this;
+    }
+
+    public PointF5 slerpGeometric(PointF5 target, float alpha) {
+        return PointFShared.slerpGeometric(this, target, alpha, this);
     }
 
     @Override
