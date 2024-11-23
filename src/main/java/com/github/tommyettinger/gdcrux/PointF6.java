@@ -446,7 +446,7 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, Json.Serializab
     public int hashCode() {
         final int h = NumberUtils.floatToIntBits(x) + 53 * NumberUtils.floatToIntBits(y) +
                 113 * NumberUtils.floatToIntBits(z) + 151 * NumberUtils.floatToIntBits(w) +
-                211 * NumberUtils.floatToIntBits(u);
+                211 * NumberUtils.floatToIntBits(u) + 253 * NumberUtils.floatToIntBits(v);
         return h ^ h >>> 16;
     }
 
