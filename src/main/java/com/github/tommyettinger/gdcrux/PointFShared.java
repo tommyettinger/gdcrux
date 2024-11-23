@@ -97,15 +97,21 @@ public interface PointFShared<P extends PointFShared<P, R>, R extends PointN<?>>
      * The exact algorithm is expected to vary between dimensions.
      * In 2D, for instance, it is sufficient to get a random float 0-360 and call
      * {@link MathUtils#cosDeg(float)} and {@link MathUtils#sinDeg(float)}
-     * to get x and y. In higher dimensions, this gets more complex. A
-     * solution that works for any dimension, but is only the best option for
+     * to get x and y. In higher dimensions, this gets more complex. The default
+     * solution, which works for any dimension, but is only the best option for
      * 4D and up, is to assign to each component a normal-distributed float
-     * using {@link Random#nextGaussian()} cast to float,
+     * (you could use {@link Random#nextGaussian()} cast to float, or
+     * {@link Distributor#probitI(int)} with a random int for input),
      * then normalize the PointFShared with {@link #nor()}.
      * @param random any Random or subclass thereof, such as one from juniper
      * @return this point after modifications, if possible, or a new PointFShared if this is immutable
      */
-    P setToRandomDirection(Random random);
+    default P setToRandomDirection(Random random){
+        for (int d = 0, rank = rank(); d < rank; d++) {
+            setAt(d, Distributor.probitI(random.nextInt()));
+        }
+        return nor();
+    }
 
     /**
      * Linear-interpolates from this point toward target, moving a distance proportional to alpha and changing this
