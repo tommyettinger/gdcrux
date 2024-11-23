@@ -218,7 +218,7 @@ public class PointF5 extends Vector5 implements Point5<PointF5>, PointFShared<Po
     }
 
     @Override
-    public PointF5 add(float value) {
+    public PointF5 plus(float value) {
         super.add(value);
         return this;
     }
@@ -236,13 +236,13 @@ public class PointF5 extends Vector5 implements Point5<PointF5>, PointFShared<Po
     }
 
     @Override
-    public PointF5 sub(float value) {
+    public PointF5 minus(float value) {
         super.sub(value);
         return this;
     }
 
     @Override
-    public PointF5 scl(float scalar) {
+    public PointF5 times(float scalar) {
         super.scl(scalar);
         return this;
     }

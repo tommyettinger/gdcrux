@@ -272,7 +272,7 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI3 add(float value) {
+    public PointI3 plus(float value) {
         x += value;
         y += value;
         z += value;
@@ -306,7 +306,7 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI3 sub(float value) {
+    public PointI3 minus(float value) {
         x -= value;
         y -= value;
         z -= value;
@@ -322,7 +322,7 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI3 scl(float value) {
+    public PointI3 times(float value) {
         x *= value;
         y *= value;
         z *= value;
@@ -342,7 +342,7 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared
     }
 
     public PointI3 mul(float value) {
-        return scl(value);
+        return times(value);
     }
 
     public PointI3 mul(float ox, float oy, float oz) {

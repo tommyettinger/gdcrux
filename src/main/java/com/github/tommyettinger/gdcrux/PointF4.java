@@ -197,7 +197,7 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, PointFShared<Po
     }
 
     @Override
-    public PointF4 add(float value) {
+    public PointF4 plus(float value) {
         super.add(value);
         return this;
     }
@@ -215,13 +215,13 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, PointFShared<Po
     }
 
     @Override
-    public PointF4 sub(float value) {
+    public PointF4 minus(float value) {
         super.sub(value);
         return this;
     }
 
     @Override
-    public PointF4 scl(float scalar) {
+    public PointF4 times(float scalar) {
         super.scl(scalar);
         return this;
     }

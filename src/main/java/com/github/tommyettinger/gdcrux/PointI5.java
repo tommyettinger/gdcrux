@@ -230,7 +230,7 @@ public class PointI5 implements Point5<PointI5>, PointIShared<PointI5, Point5<?>
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI5 sub(float value) {
+    public PointI5 minus(float value) {
         x -= value;
         y -= value;
         z -= value;
@@ -259,7 +259,7 @@ public class PointI5 implements Point5<PointI5>, PointIShared<PointI5, Point5<?>
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI5 add(float value) {
+    public PointI5 plus(float value) {
         x += value;
         y += value;
         z += value;
@@ -278,7 +278,8 @@ public class PointI5 implements Point5<PointI5>, PointIShared<PointI5, Point5<?>
         return this;
     }
 
-    public PointI5 scl(int value) {
+    @SuppressWarnings("lossy-conversions")
+    public PointI5 times(float value) {
         x *= value;
         y *= value;
         z *= value;
@@ -307,16 +308,6 @@ public class PointI5 implements Point5<PointI5>, PointIShared<PointI5, Point5<?>
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI5 scl(float value) {
-        x *= value;
-        y *= value;
-        z *= value;
-        w *= value;
-        u *= value;
-        return this;
-    }
-
-    @SuppressWarnings("lossy-conversions")
     public PointI5 scl(float ox, float oy, float oz, float ow, float ou) {
         x *= ox;
         y *= oy;
@@ -331,7 +322,7 @@ public class PointI5 implements Point5<PointI5>, PointIShared<PointI5, Point5<?>
     }
 
     public PointI5 mul(float value) {
-        return scl(value);
+        return times(value);
     }
 
     public PointI5 mul(float ox, float oy, float oz, float ow, float ou) {

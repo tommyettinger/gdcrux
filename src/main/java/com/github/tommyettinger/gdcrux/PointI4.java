@@ -207,7 +207,7 @@ public class PointI4 implements Point4<PointI4>, PointIShared<PointI4, Point4<?>
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI4 sub(float value) {
+    public PointI4 minus(float value) {
         x -= value;
         y -= value;
         z -= value;
@@ -233,7 +233,7 @@ public class PointI4 implements Point4<PointI4>, PointIShared<PointI4, Point4<?>
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI4 add(float value) {
+    public PointI4 plus(float value) {
         x += value;
         y += value;
         z += value;
@@ -247,14 +247,6 @@ public class PointI4 implements Point4<PointI4>, PointIShared<PointI4, Point4<?>
         y *= pt.y;
         z *= pt.z;
         w *= pt.w;
-        return this;
-    }
-
-    public PointI4 scl(int value) {
-        x *= value;
-        y *= value;
-        z *= value;
-        w *= value;
         return this;
     }
 
@@ -276,7 +268,7 @@ public class PointI4 implements Point4<PointI4>, PointIShared<PointI4, Point4<?>
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI4 scl(float value) {
+    public PointI4 times(float value) {
         x *= value;
         y *= value;
         z *= value;
@@ -298,7 +290,7 @@ public class PointI4 implements Point4<PointI4>, PointIShared<PointI4, Point4<?>
     }
 
     public PointI4 mul(float value) {
-        return scl(value);
+        return times(value);
     }
 
     public PointI4 mul(float ox, float oy, float oz, float ow) {

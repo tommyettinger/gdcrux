@@ -244,7 +244,7 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI2 add(float value) {
+    public PointI2 plus(float value) {
         x += value;
         y += value;
         return this;
@@ -277,7 +277,7 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
 
 
     @SuppressWarnings("lossy-conversions")
-    public PointI2 sub(float value) {
+    public PointI2 minus(float value) {
         x -= value;
         y -= value;
         return this;
@@ -291,7 +291,7 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI2 scl(float value) {
+    public PointI2 times(float value) {
         x *= value;
         y *= value;
         return this;
@@ -309,7 +309,7 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
     }
 
     public PointI2 mul(float value) {
-        return scl(value);
+        return times(value);
     }
 
     public PointI2 mul(float ox, float oy) {

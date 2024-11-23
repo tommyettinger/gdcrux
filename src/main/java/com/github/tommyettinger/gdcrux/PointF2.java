@@ -145,7 +145,7 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, PointFShared<Po
         return this;
     }
 
-    public PointF2 sub(float value) {
+    public PointF2 minus(float value) {
         super.sub(value, value);
         return this;
     }
@@ -168,13 +168,13 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, PointFShared<Po
         return this;
     }
 
-    public PointF2 add(float scalar) {
+    public PointF2 plus(float scalar) {
         super.add(scalar, scalar);
         return this;
     }
 
     @Override
-    public PointF2 scl(float scalar) {
+    public PointF2 times(float scalar) {
         super.scl(scalar);
         return this;
     }

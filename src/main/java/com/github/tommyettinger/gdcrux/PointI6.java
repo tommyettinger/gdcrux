@@ -258,7 +258,7 @@ public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI6 sub(float value) {
+    public PointI6 minus(float value) {
         x -= value;
         y -= value;
         z -= value;
@@ -290,7 +290,7 @@ public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI6 add(float value) {
+    public PointI6 plus(float value) {
         x += value;
         y += value;
         z += value;
@@ -308,16 +308,6 @@ public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>
         w *= pt.w;
         u *= pt.u;
         v *= pt.v;
-        return this;
-    }
-
-    public PointI6 scl(int value) {
-        x *= value;
-        y *= value;
-        z *= value;
-        w *= value;
-        u *= value;
-        v *= value;
         return this;
     }
 
@@ -343,7 +333,7 @@ public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>
     }
 
     @SuppressWarnings("lossy-conversions")
-    public PointI6 scl(float value) {
+    public PointI6 times(float value) {
         x *= value;
         y *= value;
         z *= value;
@@ -369,7 +359,7 @@ public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>
     }
 
     public PointI6 mul(float value) {
-        return scl(value);
+        return times(value);
     }
 
     public PointI6 mul(float ox, float oy, float oz, float ow, float ou, float ov) {

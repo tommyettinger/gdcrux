@@ -242,7 +242,7 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<Po
     }
 
     @Override
-    public PointF6 add(float value) {
+    public PointF6 plus(float value) {
         super.add(value);
         return this;
     }
@@ -260,13 +260,13 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<Po
     }
 
     @Override
-    public PointF6 sub(float value) {
+    public PointF6 minus(float value) {
         super.sub(value);
         return this;
     }
 
     @Override
-    public PointF6 scl(float scalar) {
+    public PointF6 times(float scalar) {
         super.scl(scalar);
         return this;
     }
