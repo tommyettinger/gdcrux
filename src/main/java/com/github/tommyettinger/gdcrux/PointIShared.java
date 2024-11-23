@@ -10,7 +10,7 @@ import java.util.Iterator;
  * @param <P> should be the subclassing type itself
  * @param <R> should be a wildcard-generic type for a sub-interface of {@link PointN}, such as {@code Point3<?>}
  */
-public interface PointIShared<P extends PointIShared<P, R>, R extends PointN<?>> extends PointN<P> {
+public interface PointIShared<P extends PointIShared<P, R>, R extends PointN<?>> extends PointN<P>, Iterable<Integer> {
     @Override
     default boolean floatingPoint() {
         return false;
@@ -60,6 +60,17 @@ public interface PointIShared<P extends PointIShared<P, R>, R extends PointN<?>>
         public void reset(){
             index = 0;
         }
+    }
+
+    /**
+     * Returns an iterator over boxed Integer elements, or primitive int elements if you call
+     * {@link PointISharedIterator#nextInt()}.
+     *
+     * @return a {@link PointISharedIterator}; the default implementation allocates one every time this is called
+     */
+    @Override
+    default PointISharedIterator iterator() {
+        return new PointISharedIterator(this);
     }
 
     /**

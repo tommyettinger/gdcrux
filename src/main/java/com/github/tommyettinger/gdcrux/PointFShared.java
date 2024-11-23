@@ -12,7 +12,7 @@ import java.util.Random;
  * @param <P> should be the subclassing type itself
  * @param <R> should be a wildcard-generic type for a sub-interface of {@link PointN}, such as {@code Point3<?>}
  */
-public interface PointFShared<P extends PointFShared<P, R>, R extends PointN<?>> extends PointN<P> {
+public interface PointFShared<P extends PointFShared<P, R>, R extends PointN<?>> extends PointN<P>, Iterable<Float> {
     @Override
     default boolean floatingPoint() {
         return true;
@@ -62,6 +62,17 @@ public interface PointFShared<P extends PointFShared<P, R>, R extends PointN<?>>
         public void reset(){
             index = 0;
         }
+    }
+
+    /**
+     * Returns an iterator over boxed Float elements, or primitive float elements if you call
+     * {@link PointFSharedIterator#nextFloat()}.
+     *
+     * @return a {@link PointFSharedIterator}; the default implementation allocates one every time this is called
+     */
+    @Override
+    default PointFSharedIterator iterator() {
+        return new PointFSharedIterator(this);
     }
 
     /**
