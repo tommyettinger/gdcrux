@@ -271,6 +271,14 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared
         return this;
     }
 
+    @SuppressWarnings("lossy-conversions")
+    public PointI3 add(float value) {
+        x += value;
+        y += value;
+        z += value;
+        return this;
+    }
+
     /**
      * Subtracts another point from this point.
      *
@@ -294,6 +302,14 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared
     @Override
     public PointI3 sub(int x, int y, int z) {
         super.sub(x, y, z);
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI3 sub(float value) {
+        x -= value;
+        y -= value;
+        z -= value;
         return this;
     }
 

@@ -199,14 +199,14 @@ public class PointF3 extends Vector3 implements Point3<PointF3>, PointFShared<Po
     }
 
     @Override
-    public PointF3 add(float values) {
-        super.add(values);
+    public PointF3 add(float value) {
+        super.add(value);
         return this;
     }
 
     @Override
-    public PointF3 sub(Vector3 a_vec) {
-        super.sub(a_vec);
+    public PointF3 sub(Vector3 vec) {
+        super.sub(vec);
         return this;
     }
 

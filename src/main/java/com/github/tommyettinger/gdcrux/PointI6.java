@@ -257,7 +257,8 @@ public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>
         return this;
     }
 
-    public PointI6 sub(int value) {
+    @SuppressWarnings("lossy-conversions")
+    public PointI6 sub(float value) {
         x -= value;
         y -= value;
         z -= value;
@@ -288,7 +289,8 @@ public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>
         return this;
     }
 
-    public PointI6 add(int value) {
+    @SuppressWarnings("lossy-conversions")
+    public PointI6 add(float value) {
         x += value;
         y += value;
         z += value;

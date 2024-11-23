@@ -197,14 +197,14 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, PointFShared<Po
     }
 
     @Override
-    public PointF4 add(float values) {
-        super.add(values);
+    public PointF4 add(float value) {
+        super.add(value);
         return this;
     }
 
     @Override
-    public PointF4 sub(Vector4 a_vec) {
-        super.sub(a_vec);
+    public PointF4 sub(Vector4 vec) {
+        super.sub(vec);
         return this;
     }
 

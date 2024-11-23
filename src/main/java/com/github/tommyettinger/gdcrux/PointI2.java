@@ -243,6 +243,13 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
         return this;
     }
 
+    @SuppressWarnings("lossy-conversions")
+    public PointI2 add(float value) {
+        x += value;
+        y += value;
+        return this;
+    }
+
     /**
      * Subtracts another point from this point.
      *
@@ -256,7 +263,7 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
     }
 
     /**
-     * Subtracts another x,y,z point from this point.
+     * Subtracts another x,y point from this point.
      *
      * @param x The x-coordinate of the other point
      * @param y The y-coordinate of the other point
@@ -265,6 +272,14 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
     @Override
     public PointI2 sub(int x, int y) {
         super.sub(x, y);
+        return this;
+    }
+
+
+    @SuppressWarnings("lossy-conversions")
+    public PointI2 sub(float value) {
+        x -= value;
+        y -= value;
         return this;
     }
 
