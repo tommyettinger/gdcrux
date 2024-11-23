@@ -17,6 +17,7 @@ public interface PointFShared<P extends PointFShared<P, R>, R extends PointN<?>>
     default boolean floatingPoint() {
         return true;
     }
+
     /**
      * Gets the component at the specified index.
      * Kotlin-compatible using square-bracket indexing.
@@ -43,6 +44,7 @@ public interface PointFShared<P extends PointFShared<P, R>, R extends PointN<?>>
             this.pt = pt;
             index = 0;
         }
+
         @Override
         public Float next() {
             return nextFloat();
