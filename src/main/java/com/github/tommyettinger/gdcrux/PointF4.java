@@ -386,10 +386,10 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, PointFShared<Po
 
     public PointF4 setToRandomDirection(Random random) {
         return set(
-                Distributor.linearNormalF(random.nextInt()),
-                Distributor.linearNormalF(random.nextInt()),
-                Distributor.linearNormalF(random.nextInt()),
-                Distributor.linearNormalF(random.nextInt())).nor();
+                Distributor.probitI(random.nextInt()),
+                Distributor.probitI(random.nextInt()),
+                Distributor.probitI(random.nextInt()),
+                Distributor.probitI(random.nextInt())).nor();
     }
 
     /**

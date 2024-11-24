@@ -90,10 +90,11 @@ public interface PointFShared<P extends PointFShared<P, R>, R extends PointN<?>>
      * @return this point after modifications, if possible, or a new PointFShared if this is immutable
      */
     default P setToRandomDirection(Random random){
+        PointFShared<P, R> pt = this;
         for (int d = 0, rank = rank(); d < rank; d++) {
-            setAt(d, Distributor.probitI(random.nextInt()));
+            pt = setAt(d, Distributor.probitI(random.nextInt()));
         }
-        return nor();
+        return pt.nor();
     }
 
     /**
@@ -149,18 +150,18 @@ public interface PointFShared<P extends PointFShared<P, R>, R extends PointN<?>>
         }
         // if both start and end are the origin
         if(MathUtils.isZero(magS + magE)) {
-            output.set(start);
+            output = output.set(start);
         }
         // if only the start is the origin
         else if(MathUtils.isZero(magS)){
             for (int i = 0; i < n; i++) {
-                output.setAt(i, end.get(i) * alpha);
+                output = output.setAt(i, end.get(i) * alpha);
             }
         }
         // if only the end is the origin
         else if(MathUtils.isZero(magE)){
             for (int i = 0; i < n; i++) {
-                output.setAt(i, start.get(i) * (1f - alpha));
+                output = output.setAt(i, start.get(i) * (1f - alpha));
             }
         }
         else {
@@ -176,7 +177,7 @@ public interface PointFShared<P extends PointFShared<P, R>, R extends PointN<?>>
             float e = MathUtils.sin(k * alpha);
 
             for (int i = 0; i < n; i++) {
-                output.setAt(i, (start.get(i) * s + end.get(i) * e) * invDistance);
+                output = output.setAt(i, (start.get(i) * s + end.get(i) * e) * invDistance);
             }
         }
         return output;
