@@ -20,7 +20,7 @@ import java.util.Random;
  * and {@link Externalizable}. This does have some more additions to those interfaces, such as
  * {@link #get(int)} and {@link #setAt(int, float)}.
  */
-public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<PointF6, Point6<?>>, Json.Serializable, Externalizable {
+public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<PointF6, Point6<?>>, Json.Serializable {
 
     public PointF6() {
         super();
@@ -483,26 +483,6 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<Po
         this.w = jsonData.getFloat("w");
         this.u = jsonData.getFloat("u");
         this.v = jsonData.getFloat("v");
-    }
-
-    @GwtIncompatible
-    public void writeExternal(ObjectOutput out) throws IOException {
-        out.writeFloat(x);
-        out.writeFloat(y);
-        out.writeFloat(z);
-        out.writeFloat(w);
-        out.writeFloat(u);
-        out.writeFloat(v);
-    }
-
-    @GwtIncompatible
-    public void readExternal(ObjectInput in) throws IOException {
-        x = in.readFloat();
-        y = in.readFloat();
-        z = in.readFloat();
-        w = in.readFloat();
-        u = in.readFloat();
-        v = in.readFloat();
     }
 
     /** Converts this {@code PointF6} to a string in the format {@code (x,y,z,w,u)}.

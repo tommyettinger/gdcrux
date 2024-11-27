@@ -19,7 +19,7 @@ import static com.badlogic.gdx.math.MathUtils.round;
  * and {@link Externalizable}. This does have some more additions to those interfaces, such as
  * {@link #get(int)} and {@link #setAt(int, int)}.
  */
-public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared<PointI3, Point3<?>>, Json.Serializable, Externalizable {
+public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared<PointI3, Point3<?>>, Json.Serializable {
 
     public PointI3() {
         super();
@@ -406,20 +406,6 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared
         this.x = jsonData.getInt("x");
         this.y = jsonData.getInt("y");
         this.z = jsonData.getInt("z");
-    }
-
-    @GwtIncompatible
-    public void writeExternal(ObjectOutput out) throws IOException {
-        out.writeInt(x);
-        out.writeInt(y);
-        out.writeInt(z);
-    }
-
-    @GwtIncompatible
-    public void readExternal(ObjectInput in) throws IOException {
-        x = in.readInt();
-        y = in.readInt();
-        z = in.readInt();
     }
 
     /** Converts this {@code PointI3} to a string in the format {@code (x,y,z)}.
