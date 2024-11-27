@@ -9,8 +9,8 @@ but are int-based. If you at some point find you need to use some other library,
 [SquidSquad](https://github.com/yellowstonegames/SquidSquad), you may find its point types are subtly different. That is
 where [crux](https://github.com/tommyettinger/crux) comes in: it supplies several interfaces for points in 2D through
 6D, as well as a parent superinterface that allows generalizing across all its point interfaces. Every Point class
-implements Json.Serializable (allowing serialization using libGDX Json) and Externalizable (allowing serialization using
-the Apache Foundation's Fury library, as well as probably other libraries).
+implements Json.Serializable (allowing serialization using libGDX Json). If you use Fury, all PointN implementations
+here can be serialized fastest using `fury.register(PointF2.class)`, for whatever Point class you want.
 
 This library provides subclasses of the aforementioned libGDX point types, and makes those subclasses implement crux
 interfaces. It also provides additions to libGDX Vector types (Vector5 and Vector6) for higher dimensions. These Vector
@@ -24,13 +24,13 @@ enables the Externalizable interface to be implemented by all Point classes here
 The latest release should be available on Maven Central. Using Gradle:
 
 ```
-api "com.github.tommyettinger:gdcrux:0.0.4"
+api "com.github.tommyettinger:gdcrux:0.1.0"
 ```
 
 On GWT with libGDX, you would also need this in your html module:
 ```
-implementation "com.github.tommyettinger:crux:0.1.0:sources"
-implementation "com.github.tommyettinger:gdcrux:0.0.4:sources"
+implementation "com.github.tommyettinger:crux:0.1.2:sources"
+implementation "com.github.tommyettinger:gdcrux:0.1.0:sources"
 ```
 and this in your GdxDefinition.gwt.xml file:
 ```xml
