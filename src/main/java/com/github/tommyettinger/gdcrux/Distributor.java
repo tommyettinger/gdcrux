@@ -118,12 +118,14 @@ public final class Distributor {
     }
 
     /**
-     * A single-precision probit() approximation that takes a float between 0 and 1 inclusive and returns an
+     * A single-precision probit() approximation that takes any int and returns an
      * approximately-Gaussian-distributed float between -9.080134 and 9.080134 .
      * The function maps the most negative inputs to the most negative outputs, the most positive inputs to the most
      * positive outputs, and inputs near 0 to outputs near 0. This does not consider the bottom 9 bits of {@code i}.
      * <a href="https://www.researchgate.net/publication/46462650_A_New_Approximation_to_the_Normal_Distribution_Quantile_Function">Uses this algorithm by Paul Voutier</a>.
-     * Also uses
+     * Also uses an approximation to {@link Math#log(double)} for float inputs/outputs from
+     * <a href="https://code.google.com/archive/p/fastapprox/">fastapprox</a>, which is open source
+     * under the New BSD License.
      *
      * @param i may be any int, though very close ints will not produce different results
      * @return an approximately-Gaussian-distributed float between -9.080134 and 9.080134

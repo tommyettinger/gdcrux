@@ -9,16 +9,11 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.github.tommyettinger.crux.Point6;
 
-import java.io.Externalizable;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
 import java.util.Random;
 
 /**
  * The same as {@link Vector6} (from gdcrux, not libGDX), just implementing {@link Point6}, {@link Json.Serializable},
- * and {@link Externalizable}. This does have some more additions to those interfaces, such as
- * {@link #get(int)} and {@link #setAt(int, float)}.
+ * and {@link PointFShared}.
  */
 public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<PointF6, Point6<?>>, Json.Serializable {
 

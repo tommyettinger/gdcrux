@@ -7,6 +7,8 @@ import java.lang.annotation.Target;
 
 /**
  * An annotation for the GWT compiler that makes a piece of code ignored on GWT only.
+ * This isn't actually used here, currently, but it may be used by dependencies.
+ * Importantly, any methods declared by Externalizable should be marked with this when implemented.
  *
  * @author smelC
  */

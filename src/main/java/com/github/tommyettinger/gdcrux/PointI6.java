@@ -4,17 +4,11 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.github.tommyettinger.crux.Point6;
 
-import java.io.Externalizable;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-
 import static com.badlogic.gdx.math.MathUtils.round;
 
 /**
  * If GridPoint6 existed, this would be like it, just implementing {@link Point6}, {@link Json.Serializable},
- * and {@link Externalizable}. This does have some more additions to those interfaces, such as
- * {@link #get(int)} and {@link #setAt(int, int)}.
+ * and {@link PointIShared}.
  */
 public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>>, Json.Serializable {
 

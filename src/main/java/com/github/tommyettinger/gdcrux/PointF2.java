@@ -6,16 +6,11 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.github.tommyettinger.crux.Point2;
 
-import java.io.Externalizable;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
 import java.util.Random;
 
 /**
  * The same as {@link Vector2}, just implementing {@link Point2}, {@link Json.Serializable},
- * and {@link Externalizable}. This does have some more additions to those interfaces, such as
- * {@link #get(int)} and {@link #setAt(int, float)}.
+ * and {@link PointFShared}.
  */
 public class PointF2 extends Vector2 implements Point2<PointF2>, PointFShared<PointF2, Point2<?>>, Json.Serializable {
 

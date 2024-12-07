@@ -17,7 +17,8 @@ interfaces. It also provides additions to libGDX Vector types (Vector5 and Vecto
 types are extended by the crux types PointF5 and PointF6. As support, there's PointMaker, to make creating points as
 easy as calling `pt(1, 2, 3)`, and Distributor, which is used to produce normal-distributed variables (mostly used
 internally, to set vectors to random directions in 5D and 6D). There's a GwtIncompatible annotation here, too; this
-enables the Externalizable interface to be implemented by all Point classes here, without causing issues on GWT.
+isn't currently used by this library, but it was in the past, and is generally useful when a particular piece of code 
+should be ignored by the GWT compiler but used elsewhere.
 
 # Get?
 
