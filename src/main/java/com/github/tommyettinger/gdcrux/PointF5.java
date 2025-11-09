@@ -91,6 +91,26 @@ public class PointF5 extends Vector5 implements Point5<PointF5>, PointFShared<Po
     }
 
     @Override
+    public PointF5 div(PointF5 point) {
+        x /= point.x;
+        y /= point.y;
+        z /= point.z;
+        w /= point.w;
+        u /= point.u;
+        return this;
+    }
+
+    @Override
+    public PointF5 inverse() {
+        x = 1f / x;
+        y = 1f / y;
+        z = 1f / z;
+        w = 1f / w;
+        u = 1f / u;
+        return this;
+    }
+
+    @Override
     public float dst(PointF5 point) {
         return super.dst(point);
     }
@@ -239,6 +259,16 @@ public class PointF5 extends Vector5 implements Point5<PointF5>, PointFShared<Po
     @Override
     public PointF5 times(float scalar) {
         super.scl(scalar);
+        return this;
+    }
+
+    @Override
+    public PointF5 divide(float scalar) {
+        x /= scalar;
+        y /= scalar;
+        z /= scalar;
+        w /= scalar;
+        u /= scalar;
         return this;
     }
 

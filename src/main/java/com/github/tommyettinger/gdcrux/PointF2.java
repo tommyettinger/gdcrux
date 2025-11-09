@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.NumberUtils;
 import com.github.tommyettinger.crux.Point2;
+import com.github.tommyettinger.crux.PointNFloat;
 
 import java.util.Random;
 
@@ -75,6 +76,20 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, PointFShared<Po
     @Override
     public PointF2 scl(PointF2 point) {
         super.scl(point);
+        return this;
+    }
+
+    @Override
+    public PointF2 div(PointF2 point) {
+        x /= point.x;
+        y /= point.y;
+        return this;
+    }
+
+    @Override
+    public PointF2 inverse() {
+        x = 1f / x;
+        y = 1f / y;
         return this;
     }
 
@@ -171,6 +186,13 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, PointFShared<Po
     @Override
     public PointF2 times(float scalar) {
         super.scl(scalar);
+        return this;
+    }
+
+    @Override
+    public PointF2 divide(float scalar) {
+        x /= scalar;
+        y /= scalar;
         return this;
     }
 

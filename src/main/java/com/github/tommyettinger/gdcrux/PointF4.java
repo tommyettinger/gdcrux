@@ -88,6 +88,24 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, PointFShared<Po
     }
 
     @Override
+    public PointF4 div(PointF4 point) {
+        x /= point.x;
+        y /= point.y;
+        z /= point.z;
+        w /= point.w;
+        return this;
+    }
+
+    @Override
+    public PointF4 inverse() {
+        x = 1f / x;
+        y = 1f / y;
+        z = 1f / z;
+        w = 1f / w;
+        return this;
+    }
+
+    @Override
     public float dst(PointF4 point) {
         return super.dst(point);
     }
@@ -218,6 +236,15 @@ public class PointF4 extends Vector4 implements Point4<PointF4>, PointFShared<Po
     @Override
     public PointF4 times(float scalar) {
         super.scl(scalar);
+        return this;
+    }
+
+    @Override
+    public PointF4 divide(float scalar) {
+        x /= scalar;
+        y /= scalar;
+        z /= scalar;
+        w /= scalar;
         return this;
     }
 

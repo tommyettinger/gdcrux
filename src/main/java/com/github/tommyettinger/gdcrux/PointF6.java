@@ -98,6 +98,28 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<Po
     }
 
     @Override
+    public PointF6 div(PointF6 point) {
+        x /= point.x;
+        y /= point.y;
+        z /= point.z;
+        w /= point.w;
+        u /= point.u;
+        v /= point.v;
+        return this;
+    }
+
+    @Override
+    public PointF6 inverse() {
+        x = 1f / x;
+        y = 1f / y;
+        z = 1f / z;
+        w = 1f / w;
+        u = 1f / u;
+        v = 1f / v;
+        return this;
+    }
+
+    @Override
     public float dst(PointF6 point) {
         return super.dst(point);
     }
@@ -263,6 +285,17 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<Po
     @Override
     public PointF6 times(float scalar) {
         super.scl(scalar);
+        return this;
+    }
+
+    @Override
+    public PointF6 divide(float scalar) {
+        x /= scalar;
+        y /= scalar;
+        z /= scalar;
+        w /= scalar;
+        u /= scalar;
+        v /= scalar;
         return this;
     }
 

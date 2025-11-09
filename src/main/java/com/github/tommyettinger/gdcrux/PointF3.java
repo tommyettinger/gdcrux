@@ -87,6 +87,22 @@ public class PointF3 extends Vector3 implements Point3<PointF3>, PointFShared<Po
     }
 
     @Override
+    public PointF3 div(PointF3 point) {
+        x /= point.x;
+        y /= point.y;
+        z /= point.z;
+        return this;
+    }
+
+    @Override
+    public PointF3 inverse() {
+        x = 1f / x;
+        y = 1f / y;
+        z = 1f / z;
+        return this;
+    }
+
+    @Override
     public float dst(PointF3 point) {
         return super.dst(point);
     }
@@ -220,6 +236,14 @@ public class PointF3 extends Vector3 implements Point3<PointF3>, PointFShared<Po
     @Override
     public PointF3 times(float scalar) {
         super.scl(scalar);
+        return this;
+    }
+
+    @Override
+    public PointF3 divide(float scalar) {
+        x /= scalar;
+        y /= scalar;
+        z /= scalar;
         return this;
     }
 
