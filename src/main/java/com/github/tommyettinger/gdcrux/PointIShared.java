@@ -2,6 +2,7 @@ package com.github.tommyettinger.gdcrux;
 
 import com.badlogic.gdx.math.Interpolation;
 import com.github.tommyettinger.crux.PointN;
+import com.github.tommyettinger.crux.PointNInt;
 
 import java.util.Iterator;
 
@@ -10,7 +11,7 @@ import java.util.Iterator;
  * @param <P> should be the subclassing type itself
  * @param <R> should be a wildcard-generic type for a sub-interface of {@link PointN}, such as {@code Point3<?>}
  */
-public interface PointIShared<P extends PointIShared<P, R>, R extends PointN<?>> extends PointN<P>, Iterable<Integer> {
+public interface PointIShared<P extends PointIShared<P, R>, R extends PointN<?>> extends PointNInt<P, R>, Iterable<Integer> {
     @Override
     default boolean floatingPoint() {
         return false;
