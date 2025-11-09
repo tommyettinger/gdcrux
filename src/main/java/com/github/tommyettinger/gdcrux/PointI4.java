@@ -252,6 +252,15 @@ public class PointI4 implements Point4<PointI4>, PointIShared<PointI4, Point4<?>
         return this;
     }
 
+    @Override
+    public PointI4 div(PointI4 point) {
+        x /= point.x;
+        y /= point.y;
+        z /= point.z;
+        w /= point.w;
+        return this;
+    }
+
     @SuppressWarnings("lossy-conversions")
     public PointI4 scl(Point4<?> pt) {
         x *= pt.x();
@@ -267,6 +276,16 @@ public class PointI4 implements Point4<PointI4>, PointIShared<PointI4, Point4<?>
         y *= value;
         z *= value;
         w *= value;
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    @Override
+    public PointI4 divide(float scalar) {
+        x /= scalar;
+        y /= scalar;
+        z /= scalar;
+        w /= scalar;
         return this;
     }
 

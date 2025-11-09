@@ -324,10 +324,27 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared
     }
 
     @SuppressWarnings("lossy-conversions")
+    @Override
+    public PointI3 divide(float scalar) {
+        x /= scalar;
+        y /= scalar;
+        z /= scalar;
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
     public PointI3 scl(float ox, float oy, float oz) {
         x *= ox;
         y *= oy;
         z *= oz;
+        return this;
+    }
+
+    @Override
+    public PointI3 div(PointI3 point) {
+        x /= point.x;
+        y /= point.y;
+        z /= point.z;
         return this;
     }
 

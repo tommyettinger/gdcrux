@@ -90,6 +90,13 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
     }
 
     @Override
+    public PointI2 div(PointI2 point) {
+        x /= point.x;
+        y /= point.y;
+        return this;
+    }
+
+    @Override
     public float dst(PointI2 point) {
         return super.dst(point);
     }
@@ -288,6 +295,14 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
     public PointI2 times(float value) {
         x *= value;
         y *= value;
+        return this;
+    }
+
+    @SuppressWarnings("lossy-conversions")
+    @Override
+    public PointI2 divide(float scalar) {
+        x /= scalar;
+        y /= scalar;
         return this;
     }
 

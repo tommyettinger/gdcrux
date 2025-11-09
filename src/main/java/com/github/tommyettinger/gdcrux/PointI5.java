@@ -282,6 +282,17 @@ public class PointI5 implements Point5<PointI5>, PointIShared<PointI5, Point5<?>
         return this;
     }
 
+    @SuppressWarnings("lossy-conversions")
+    @Override
+    public PointI5 divide(float scalar) {
+        x /= scalar;
+        y /= scalar;
+        z /= scalar;
+        w /= scalar;
+        u /= scalar;
+        return this;
+    }
+
     public PointI5 scl(int ox, int oy, int oz, int ow, int ou) {
         x *= ox;
         y *= oy;
@@ -308,6 +319,16 @@ public class PointI5 implements Point5<PointI5>, PointIShared<PointI5, Point5<?>
         z *= oz;
         w *= ow;
         u *= ou;
+        return this;
+    }
+
+    @Override
+    public PointI5 div(PointI5 point) {
+        x /= point.x;
+        y /= point.y;
+        z /= point.z;
+        w /= point.w;
+        u /= point.u;
         return this;
     }
 
