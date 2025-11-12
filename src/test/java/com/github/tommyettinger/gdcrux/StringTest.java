@@ -1,7 +1,5 @@
 package com.github.tommyettinger.gdcrux;
 
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.math.Vector4;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -55,5 +53,54 @@ public class StringTest {
     @Test
     public void testPointF6FromString () {
         assertEquals(new PointF6(-5f, 42.00055f, 44444.32f, -1.975f, -0.1f, 1337.0f), new PointF6().fromString("(-5,42.00055,44444.32,-1.9750,-0.1,1337.0)"));
+    }
+    @Test
+    public void testPointI2ToString () {
+        assertEquals("(-5,42)", new PointI2(-5, 42).toString());
+    }
+
+    @Test
+    public void testPointI2FromString () {
+        assertEquals(new PointI2(-5, 42), new PointI2().fromString("(-5,42)"));
+    }
+
+    @Test
+    public void testPointI3ToString () {
+        assertEquals("(-5,42,44444)", new PointI3(-5, 42, 44444).toString());
+    }
+
+    @Test
+    public void testPointI3FromString () {
+        assertEquals(new PointI3(-5, 42, 44444), new PointI3().fromString("(-5,42,44444)"));
+    }
+
+    @Test
+    public void testPointI4ToString () {
+        assertEquals("(-5,42,44444,-1975)", new PointI4(-5, 42, 44444, -1975).toString());
+    }
+
+    @Test
+    public void testPointI4FromString () {
+        assertEquals(new PointI4(-5, 42, 44444, -1975), new PointI4().fromString("(-5,42,44444,-1975)"));
+    }
+
+    @Test
+    public void testPointI5ToString () {
+        assertEquals("(-5,42,44444,-1975,-1)", new PointI5(-5, 42, 44444, -1975, -1).toString());
+    }
+
+    @Test
+    public void testPointI5FromString () {
+        assertEquals(new PointI5(-5, 42, 44444, -1975, -1), new PointI5().fromString("(-5,42,44444,-1975,-1)"));
+    }
+
+    @Test
+    public void testPointI6ToString () {
+        assertEquals("(-5,42,44444,-1975,-1,1337)", new PointI6(-5, 42, 44444, -1975, -1, 1337).toString());
+    }
+
+    @Test
+    public void testPointI6FromString () {
+        assertEquals(new PointI6(-5, 42, 44444, -1975, -1, 1337), new PointI6().fromString("(-5,42,44444,-1975,-1,1337)"));
     }
 }
