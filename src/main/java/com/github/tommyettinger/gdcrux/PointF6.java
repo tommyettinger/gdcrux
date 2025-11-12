@@ -202,11 +202,7 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<Po
     }
 
     public PointF6 set(float x, float y, float z, float w, float u, float v){
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.w = w;
-        this.u = u;
+        super.set(x, y, z, w, u, v);
         return this;
     }
 
@@ -513,7 +509,7 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<Po
         this.v = jsonData.getFloat("v");
     }
 
-    /** Converts this {@code PointF6} to a string in the format {@code (x,y,z,w,u)}.
+    /** Converts this {@code PointF6} to a string in the format {@code (x,y,z,w,u,v)}.
      * @return a string representation of this object. */
     @Override
     public String toString () {
