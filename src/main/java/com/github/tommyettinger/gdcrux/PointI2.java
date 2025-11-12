@@ -346,8 +346,8 @@ public class PointI2 extends GridPoint2 implements Point2<PointI2>, PointIShared
     @SuppressWarnings({"DefaultNotLastCaseInSwitch", "SwitchStatementWithTooFewBranches"})
     public PointI2 setAt(int index, int value){
         switch (index){
-            default: x = value;
-            case 1 : y = value;
+            default: x = value; break;
+            case 1 : y = value; break;
         }
         return this;
     }

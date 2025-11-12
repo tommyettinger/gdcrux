@@ -384,9 +384,9 @@ public class PointI3 extends GridPoint3 implements Point3<PointI3>, PointIShared
     @SuppressWarnings("DefaultNotLastCaseInSwitch")
     public PointI3 setAt(int index, int value){
         switch (index){
-            default: x = value;
-            case 1 : y = value;
-            case 2 : z = value;
+            default: x = value; break;
+            case 1 : y = value; break;
+            case 2 : z = value; break;
         }
         return this;
     }

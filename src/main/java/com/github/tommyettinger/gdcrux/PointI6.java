@@ -435,12 +435,12 @@ public class PointI6 implements Point6<PointI6>, PointIShared<PointI6, Point6<?>
     @SuppressWarnings("DefaultNotLastCaseInSwitch")
     public PointI6 setAt(int index, int value){
         switch (index){
-            default: x = value;
-            case 1 : y = value;
-            case 2 : z = value;
-            case 3 : w = value;
-            case 4 : u = value;
-            case 5 : v = value;
+            default: x = value; break;
+            case 1 : y = value; break;
+            case 2 : z = value; break;
+            case 3 : w = value; break;
+            case 4 : u = value; break;
+            case 5 : v = value; break;
         }
         return this;
     }
