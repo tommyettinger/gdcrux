@@ -522,9 +522,9 @@ public class PointF3 extends Vector3 implements Point3<PointF3>, PointFShared<Po
     @SuppressWarnings("DefaultNotLastCaseInSwitch")
     public PointF3 setAt(int index, float value){
         switch (index){
-            default: x = value;
-            case 1 : y = value;
-            case 2 : z = value;
+            default: x = value; break;
+            case 1 : y = value; break;
+            case 2 : z = value; break;
         }
         return this;
     }

@@ -415,8 +415,8 @@ public class PointF2 extends Vector2 implements Point2<PointF2>, PointFShared<Po
     @SuppressWarnings({"DefaultNotLastCaseInSwitch", "SwitchStatementWithTooFewBranches"})
     public PointF2 setAt(int index, float value){
         switch (index){
-            default: x = value;
-            case 1 : y = value;
+            default: x = value; break;
+            case 1 : y = value; break;
         }
         return this;
     }

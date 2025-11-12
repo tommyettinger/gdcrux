@@ -471,12 +471,12 @@ public class PointF6 extends Vector6 implements Point6<PointF6>, PointFShared<Po
     @SuppressWarnings("DefaultNotLastCaseInSwitch")
     public PointF6 setAt(int index, float value){
         switch (index){
-            default: x = value;
-            case 1 : y = value;
-            case 2 : z = value;
-            case 3 : w = value;
-            case 4 : u = value;
-            case 5 : v = value;
+            default: x = value; break;
+            case 1 : y = value; break;
+            case 2 : z = value; break;
+            case 3 : w = value; break;
+            case 4 : u = value; break;
+            case 5 : v = value; break;
         }
         return this;
     }
