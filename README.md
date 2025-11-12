@@ -16,7 +16,7 @@ This library provides subclasses of the aforementioned libGDX point types, and m
 interfaces. It also provides additions to libGDX Vector types (Vector5 and Vector6) for higher dimensions. These Vector
 types are extended by the crux types PointF5 and PointF6. As support, there's PointMaker, to make creating points as
 easy as calling `pt(1, 2, 3)`, and Distributor, which is used to produce normal-distributed variables (mostly used
-internally, to set vectors to random directions in 5D and 6D). There's a GwtIncompatible annotation here, too; this
+internally, to set vectors to random directions in 4D through 6D). There's a GwtIncompatible annotation here, too; this
 isn't currently used by this library, but it was in the past, and is generally useful when a particular piece of code 
 should be ignored by the GWT compiler but used elsewhere.
 
@@ -25,16 +25,17 @@ should be ignored by the GWT compiler but used elsewhere.
 The latest release should be available on Maven Central. Using Gradle:
 
 ```
-api "com.github.tommyettinger:gdcrux:0.1.1"
+api "com.github.tommyettinger:gdcrux:0.1.2"
 ```
 
 On GWT with libGDX, you would also need this in your html module:
 ```
-implementation "com.github.tommyettinger:crux:0.1.2:sources"
-implementation "com.github.tommyettinger:gdcrux:0.1.1:sources"
+implementation "com.github.tommyettinger:crux:0.1.3:sources"
+implementation "com.github.tommyettinger:gdcrux:0.1.2:sources"
 ```
 and this in your GdxDefinition.gwt.xml file:
 ```xml
+<inherits name="com.github.tommyettinger.crux" />
 <inherits name="com.github.tommyettinger.gdcrux" />
 ```
 
